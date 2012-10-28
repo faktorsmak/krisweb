@@ -1,0 +1,8 @@
+<img src="/images/<%= book.id %>.png" width="150px" align="left" class="bookicon"/>
+<h2><%= book.title %></h2>
+<h5>Publication Date: <%= book.publishdate %></h5>
+<p><%= book.description %>
+</p> 
+<%- contentFor('contenttitle') %>
+<%= book.title %>
+<%- contentFor('contentright') %>

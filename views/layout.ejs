@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>Kristina Zakrzewski</title>
+		<LINK href="/stylesheets/application.css" rel="stylesheet" type="text/css">
+		<link type="text/css" href="/jquery-ui/css/ui-lightness/jquery-ui-1.8.24.custom.css" rel="Stylesheet" />
+
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+		<script type="text/javascript" src="/jquery-ui/js/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript" src="/jquery-ui/js/jquery-ui-1.8.24.custom.min.js"></script>
+
+	    <script src="/javascripts/jquery.hoverIntent.js"></script>
+	   
+    	<script>
+			// When the document loads do everything inside here ...
+			$(document).ready(function() {
+
+				$("a.tab").hoverIntent(function() {
+					$("div.menu_content").fadeOut();
+					var content_show = $(this).attr("title");
+					$("#" + content_show).slideDown();
+				}, function() {
+				});
+
+				
+				// select the tab based on the URL
+				var path = window.location.pathname;
+				if (path == '/') {
+					$('.home').removeClass('home').addClass('homeselected');
+				} else if (path.substring(0, 6) === '/books') {
+					$('.novels').removeClass('novels').addClass('novelsselected');
+				} else if (path.substring(0, 8) === '/stories') {
+					$('.stories').removeClass('stories').addClass('storiesselected');
+				} else if (path.substring(0, 5) === '/blog') {
+					$('.blog').removeClass('blog').addClass('blogselected');
+				}
+
+			});
+		</script>
+
+	</head>
+	<body>
+		<div id="top"></div>
+		<div id="main">
+			<div id="tophalf">
+			<div id="wrapper">
+				<div id="titleright">
+					<a href="https://twitter.com/k_zakrzewski" class="twitter-follow-button" data-show-count="false">Follow @k_zakrzewski</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</div>
+			</div>
+			<div id="zak">
+				<img src="/images/zak.png" width="110px"/>
+			</div>
+			<div id="kz">
+				<h2>Kristina Zakrzewski</h2>
+				<h5>Author | Teacher | Mother | Wife</h5>
+			</div>
+				<div id="menu">
+				  <a href="/">
+				  	<div class="home">Home</div>
+				  </a>
+				  <a href="/books">
+				  	<div class="novels">Novels</div>
+				  </a>
+				  <a href="/stories">
+				  	<div class="stories">Stories</div>
+				  </a>
+				  <a href="/blog">
+				  	<div class="blog">Blog</div>
+				  </a>
+				</div>
+			</div>
+			<div id="bottomhalf">
+			<!--
+			<div id="title">
+			  <span id="titleleft">
+			   <h2><%-contenttitle%></h2>
+			  </span>
+			  <div id="titleright">
+			    <a href="https://twitter.com/k_zakrzewski" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @k_zakrzewski</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			  </div>
+			</div> -->
+			<div id="contentleft"><%-body%></div>
+			<div id="contentright"><%-contentright%>
+			</div>
+			</div>
+		</div>
+
+		<div id="bottom"></div>
+	</body>
+</html>

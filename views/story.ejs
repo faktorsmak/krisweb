@@ -1,0 +1,11 @@
+<h2><%= story.title %></h2>
+<p><%- story.content %></p>
+<h5><%= story.submitdate.toDateString() %></h5>
+<%- contentFor('contenttitle') %>
+<%= story.title %>
+<%- contentFor('contentright') %>
+<div class="sideBox">
+	<img id='storyimage' align='center' width="290" src='/images/stories/<%= story._id %>' />
+</div>
+<br/><br/>
+<a href="/books/Cold_Coffee"><img src="/images/coldcoffee_ad3.png" width="300" /></a>

@@ -1,0 +1,9 @@
+<h2><%= blogentry.title %></h2>
+<p><%- blogentry.content %></p>
+<h5><%= blogentry.submitdate.toDateString() %></h5>
+<%- contentFor('contenttitle') %>
+<%= blogentry.title %>
+<% if (user) { %>
+		<a href="/admin/blogentries/edit/<%= blogentry.id %>">Edit this entry</a>
+<% } %>
+<%- contentFor('contentright') %>

@@ -1,0 +1,50 @@
+<script>
+	$(document).ready(function() {
+		$(".bookicon").hoverIntent(function() {
+			$("#lookInside").slideDown(300);
+		}, function() {
+			$("#lookInside").slideUp(10);
+		});
+	});
+</script>
+<div class="contentLeftColumn1">
+	<div id="lookInside" style="display:none; position:absolute; left:25px; top:-6px;">
+	<h5>Click to look inside...</h5>
+	</div>
+	<a href="/books/Cold_Coffee/preview"><img alt="Cold Coffee - Look Inside" src="/images/coldcoffee_cover.png" width="210px" align="left" class="bookicon"/></a>
+</div>
+<div class="contentLeftColumn2">
+	<h2>Cold Coffee</h2>
+	<h5>Published October 2011</h5>
+	<p>Beatrice Johnson. Fiercely independent. Fiercely protective. Fiercely talented when it comes to building 
+	anything out of raw materials. And fiercely...not able to pick herself up after the death of her husband.
+	Two years after, the memories of her late husband ever present, her best friend suddenly moving in, and 
+	her daughter struggling with life in general, Bea decides to begin rebuilding her family's lives. After 
+	all, with a little bit of elbow grease, and maybe some meddling, Bea can put anything back together. The 
+	only question is...can she put herself back together first.
+	</p> 
+	<p><a href="/books/Cold_Coffee/preview">Click here to start reading Cold Coffee</a></p>
+</div>
+<%- contentFor('contenttitle') %>
+Cold Coffee | Kristina Zakrzewski
+<%- contentFor('contentright') %>
+<br/>
+<div class="sideBox">
+	<div class="sideBoxTitle">
+		<h3>Buy It Now!</h3>
+	</div>
+	<div class="sideBoxContent">
+		<table>
+			<tr class="rowA">
+				<td width="110px">Kindle Edition</td>
+				<td><a href="http://www.amazon.com/Cold-Coffee-ebook/dp/B006RK8IZG">$2.99 - Amazon.com</a></td>
+			</tr>
+			<tr class="rowB">
+				<td width="110px">Hardcover</td>
+				<td><a href="http://www.lulu.com/shop/kristina-zakrzewski/cold-coffee/hardcover/product-18885969.html">$25.19 - Lulu.com</a></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<br/>
+<br/>

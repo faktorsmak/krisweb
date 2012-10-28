@@ -1,0 +1,85 @@
+<script language="javascript">
+$(document).ready(function() {
+	$(".deleteentry").click(function() {
+		var deletedEntry = $(this).parents(".booklist");
+		var uri = '/blog/' + $(this).parents(".booklist").attr("id");
+		$("#deleteConfirm").dialog({ buttons: 
+										{ 
+											"Delete": function() {
+												var dlg = $(this);
+												$.ajax(
+												{
+													url: uri,
+													type: 'DELETE',
+													dataType: 'json',
+													success: function(data) {
+														deletedEntry.hide();
+														dlg.dialog("close");
+													},
+													error: function(data) {
+														alert(data.message);
+													}
+												});
+											}
+										,
+										 
+											"Cancel": function() { $(this).dialog("close"); }
+										}
+									});
+	});
+});
+</script>
+
+<% for(var i=0; i<blogentries.length; i++) { 
+    if (i == blogentries.length-1) {
+%>
+	<div class="booklist booklistlast" id="<%= blogentries[i]._id %>">
+<% } else { %>
+	<div class="booklist" id="<%= blogentries[i]._id %>">
+<% } %>
+	  <h2><%= blogentries[i].title %></h2>
+	  <h5><%= blogentries[i].submitdate.toDateString() %></h5>
+	  <p><%= blogentries[i].content %></p>
+		<% if (user) { %>
+			<div class="adminops">
+				<a href="/admin/blogentries/edit/<%= blogentries[i].id %>"><img src="/images/icons/edit.png" alt="Edit" width="20" /></a>
+				<a class="deleteentry" id="delete_<%= blogentries[i].id %>" href="Javascript:void(0);"><img src="/images/icons/delete.png" alt="Delete" width="20" /></a>
+			</div>
+		<% } %>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mysite.com/blog/<%= blogentries[i].id %>" data-via="k_zakrzewski">Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</div>
+<% } %>
+
+<div class="paging" style="float:right;">
+<% if (pages > 1) { %>
+  <% if (page > 1) { %>
+    <% var prevPage = page-1; %>
+    <a href='/blog?page=<%= page-1 %>'> &lt previous </a>&nbsp;
+  <% } %>
+
+<% for (var j=1; j<=pages; j++) { %>
+  <% if (j != 1) { %>
+  |
+  <% } %>
+  <% if (j != page) { %>
+    <a href='/blog?page=<%= j %>' > <%= j %> </a> 
+  <% } else { %>
+    <%= j %>
+  <% } %>
+<% } %>
+
+  <% if (page < pages) { %>
+    <% var nextPage = parseInt(page,10) + 1; %>
+    &nbsp;<a href='/blog?page=<%= nextPage %>'> next &gt; </a>
+  <% } %>
+<% } %>
+</div>
+<div id="deleteConfirm" title="Delete Confirmation" style="display:none">
+  <p>Are you sure you want to delete this entry?"</p>
+</div>
+<%- contentFor('contenttitle') %>
+Blog
+<%- contentFor('contentright') %>
+<img src="/images/kris1.png" width="300" />
+<br/>

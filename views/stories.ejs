@@ -1,0 +1,20 @@
+<% for(var i=0; i<stories.length; i++) { 
+    if (i == stories.length-1) {
+%>
+	<a class="booklistlink" href="/stories/<%= stories[i].id %>">
+	<div class="booklist booklistlast">
+<% } else { %>
+	<div class="booklist">
+<% } %>
+	  <img src="/images/stories/<%= stories[i].id %>" width="150px" align="left" class="bookicon"/>
+	  <h2><%= stories[i].title %></h2>
+	  <h5><%= stories[i].submitdate %></h5>
+	  <p><%= stories[i].content %>...(click to read more)</p>
+	</div>
+	</a>
+<% } %>
+
+<%- contentFor('contenttitle') %>
+Stories and Other Writings
+<%- contentFor('contentright') %>
+<img src="/images/coldcoffee_ad2.png" />

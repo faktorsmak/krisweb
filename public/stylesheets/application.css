@@ -1,0 +1,404 @@
+
+body {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	text-decoration:none; 
+	font-size: .9em;
+	color: #444; 
+	line-height: 1.57;
+	background: #f7f6f1;
+	//background: #96edfc;  // Tiffany blue
+}
+
+a:link {
+	color:#d28327;
+	text-decoration:none;
+}
+a:visited {
+	color:#d28327;
+	text-decoration:none;
+}
+a:hover {
+	color:#d28327;
+	text-decoration:underline;
+}
+
+#top {
+	height: 30px;	
+}
+
+#main {
+	background-color:#ffffff;
+	padding: 15px;
+	width: 1000px;
+	box-shadow: 2px 2px 5px #5e5e5e;
+	margin-left: auto ;
+  	margin-right: auto ;
+}
+
+#zak {
+	float:left;
+	margin-left:10px;
+}
+
+#kz {
+	margin-left:20px;
+	margin-top:0px;
+	margin-bottom:0px;
+	padding-left:5px;
+	padding-right:5px;
+	float:left;
+}
+
+#kz h2 {
+	margin: 8px 0px 0px 0px;
+	padding: 0;
+	font-size:36px;
+	height: 40px;
+//	text-shadow: #dda859 1px 1px 2px
+}
+#kz h5 {
+	margin:0;
+	float:right;
+}
+
+#tophalf {
+	height:90px;
+	border-bottom: 3px solid #333333;
+	vertical-align: bottom;
+}
+
+#bottomhalf {
+	overflow:hidden;
+	margin-top: 5px;
+	border:1px solid #efefef;
+	border-radius: 5px;
+	padding:3px;
+}
+
+#title {
+	padding: 0px 0px 0px 15px;
+	width: 1000px;
+	overflow: hidden;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+#titleleft {
+	display:inline-block;
+}
+
+#titleright {
+	float:right;
+	margin: 0px 5px 10px 0px;
+	overflow:hidden;
+	height: 50px;
+}
+
+#contentleft {
+	position:relative;
+	margin-left:2px;
+	margin-top: 15px;
+	width:650px;
+	padding:5px 10px 10px 10px;
+	float:left;
+	text-align:justify;
+	text-justify:inter-word;
+}
+
+#contentleft h1 {
+	margin:2px;
+}
+
+#contentleft h2 {
+	margin:2px;
+}
+
+#contentleft h3 {
+	margin:2px;
+}
+
+#contentleft h5 {
+	margin:0;
+	color:#dda859;
+}
+
+.contentLeftColumn1 {
+	float:left;
+	width: 240px;
+}
+.contentLeftColumn2 {
+	float:left;
+	width: 400px;
+	padding-right: 10px;
+}
+
+.booklist {
+	display:block;
+	margin:0px 0px 0px 0px;
+	padding:0px 10px 0px 10px;
+	border-bottom:1px solid #E3E3E3;
+	overflow:auto;
+}
+.booklist:hover {
+	background-color:#f8e4c1;
+}
+.booklistlink:link {
+	text-decoration:none;
+	color: #444; 
+}
+.booklistlink:hover {
+	text-decoration:none;
+	color: #444; 
+}
+.booklistlink:visited {
+	text-decoration:none;
+	color: #444; 
+}
+
+.booklistlast {
+	display:block;
+	margin:0px 0px 0px 0px;
+	padding:0px 10px 0px 10px;
+	overflow:auto;
+}
+.booklistlast:hover {
+	background-color:#f8e4c1;
+}
+
+#contentright {
+	width:338;
+	margin-top: 15px;
+	float:left;
+	text-align:center;
+}
+
+#contentright h3 {
+	margin:0px;
+	padding:3px;
+}
+#contentrighttext {
+	text-align:justify;
+	text-justify:inter-word;
+}
+
+#wrapper {
+	position:relative;
+	width:400px;
+	overflow:hidden;
+	float:right;
+}
+	
+/* Everything CSS Sprite Menu */
+#menu {
+	margin:7px 5px 0px;
+	padding:0; 
+	float:right;
+}
+
+.home {
+	border-radius: 5px 5px 0px 0px;
+	border: 1px solid #6a7b4c;
+	width: 100px;
+	background-color:#f7f6f1;
+	float:left;
+	text-align:center;
+	margin-left:2px;
+	box-shadow: 1px 0px 1px #5e5e5e;
+}
+.home:hover {
+	background-color:#ffffff;	
+}
+.homeselected {
+	border-radius: 5px 5px 0px 0px;
+	border: 1px solid #6a7b4c;
+	width: 100px;
+	float:left;
+	background-color:#f8e4c1;
+	float:left;
+	text-align:center;
+	margin-left:2px;
+	box-shadow: 1px 0px 1px #5e5e5e;
+}
+.novels {
+	border-radius: 5px 5px 0px 0px;
+	border: 1px solid #6a7b4c;
+	width: 100px;
+	float:left;
+	background-color:#f7f6f1;
+	text-align:center;
+	margin-left:2px;
+	box-shadow: 1px 0px 1px #5e5e5e;
+}
+.novels:hover {
+	background-color:#ffffff;	
+}
+.novelsselected {
+	border-radius: 5px 5px 0px 0px;
+	border: 1px solid #6a7b4c;
+	width: 100px;
+	float:left;
+	background-color:#f8e4c1;
+	float:left;
+	text-align:center;
+	margin-left:2px;
+	box-shadow: 1px 0px 1px #5e5e5e;
+}
+.stories {
+	border-radius: 5px 5px 0px 0px;
+	border: 1px solid #6a7b4c;
+	width: 100px;
+	float:left;
+	background-color:#f7f6f1;
+	text-align:center;
+	margin-left:2px;
+	box-shadow: 1px 0px 1px #5e5e5e;
+}
+.stories:hover {
+	background-color:#ffffff;	
+}
+.storiesselected {
+	border-radius: 5px 5px 0px 0px;
+	border: 1px solid #6a7b4c;
+	width: 100px;
+	float:left;
+	background-color:#f8e4c1;
+	float:left;
+	text-align:center;
+	margin-left:2px;
+	box-shadow: 1px 0px 1px #5e5e5e;
+}
+.blog {
+	border-radius: 5px 5px 0px 0px;
+	border: 1px solid #6a7b4c;
+	width: 100px;
+	float:left;
+	background-color:#f7f6f1;
+	text-align:center;
+	margin-left:2px;
+	box-shadow: 1px 0px 1px #5e5e5e;
+}
+.blog:hover {
+	background-color:#ffffff;	
+}
+.blogselected {
+	border-radius: 5px 5px 0px 0px;
+	border: 1px solid #6a7b4c;
+	width: 100px;
+	float:left;
+	background-color:#f8e4c1;
+	float:left;
+	text-align:center;
+	margin-left:2px;
+	box-shadow: 1px 0px 1px #5e5e5e;
+}
+
+li.formlist {	
+	list-style:none; 
+}
+
+ul.linklist {	
+	list-style:none;
+	padding-left:0;
+}
+
+#content
+{
+	padding:10px;
+	margin: 0px;
+	width: 1000px;
+	border:1px solid #494e52;
+}
+
+#bookimg
+{
+	float:left;
+	padding-top: 10px;
+}
+
+div .bookdescription {
+	position: fixed;
+	left: 500px;
+	top: 50px;
+	border: 1px solid #6a7b4c;
+	padding:0px 10px 10px;
+	display:none;
+	background-color: #ffebb5;
+	width: 300px;
+	height: 250px;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+.bookicon {
+	margin: 8px 25px 5px 10px;
+	padding: -1px;
+	box-shadow: 2px 2px 4px #5e5e5e;
+}
+.bookicon:hover {
+	margin: 7px 27px 6px 8px;
+	padding: -1px;
+	box-shadow: 4px 4px 6px #5e5e5e;
+}
+
+.reviews {
+	width:auto;
+}
+
+.rating5 {
+	background:url('/images/starsprite.png') no-repeat;
+	height: 14px;
+	background-position:0px -58px;
+}
+
+.highlightBox {
+	border: 1px solid #6a7b4c;
+	border-radius: 3px;
+	padding: 1px 3px 1px 3px;
+	background-color:#f7f6f1;
+	box-shadow: 1px 1px 2px #5e5e5e;
+}
+.highlightBox:hover {
+	background-color:#f8e4c1;
+}
+.highlightBox a:link {
+	color:#d28327;
+	text-decoration:none;
+}
+.highlightBox a:visited {
+	color:#d28327;
+	text-decoration:none;
+}
+.highlightBox a:hover {
+	color:#d28327;
+	text-decoration:underline;
+}
+
+.sideBox {
+	border-radius: 5px 5px 0px 0px;
+	border: 1px solid #6a7b4c;
+	box-shadow: 1px 1px 2px #5e5e5e;
+	width: 300px;
+}
+.sideBoxTitle {
+	border-radius: 5px 5px 0px 0px;
+	border-bottom: 1px solid #6a7b4c;
+	background-color:#f8e4c1;
+}
+.sideBoxContent table {
+	text-align:left;
+	width:100%;
+	margin:0;
+	border-collapse:collapse;
+}
+.sideBoxContent tr {
+	width:100%;
+}
+.sideBoxContent td {
+	padding:3px;
+}
+.sideBoxContent .rowA {
+	background-color:#ffffff;
+}
+.sideBoxContent .rowB {
+	background-color:#f7f6f1;
+}
