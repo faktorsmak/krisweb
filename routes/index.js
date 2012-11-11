@@ -196,7 +196,7 @@ exports.adminStoriesNewPost = function(req,res) {
 	    // rename the uploaded image (if there was one) to use the ID
 	    var tmp_path = req.files.image.path;
 	    // set where the file should actually exists - in this case it is in the "images" directory
-	    var target_path = './public/images/stories/' + newStory._id;
+	    var target_path = './krisweb/public/images/stories/' + newStory._id;
 	    // move the file from the temporary location to the intended location
 	    fs.rename(tmp_path, target_path, function(err) {
 	        if (err) throw err;
