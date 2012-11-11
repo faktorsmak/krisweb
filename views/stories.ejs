@@ -8,7 +8,7 @@
 <% } %>
 	  <img src="/images/stories/<%= stories[i].id %>" width="150px" align="left" class="bookicon"/>
 	  <h2><%= stories[i].title %></h2>
-	  <h5><%= stories[i].submitdate %></h5>
+	  <h5><%= stories[i].submitdate.toDateString() %></h5>
 	  <p><%= stories[i].content %>...(click to read more)</p>
 	</div>
 	</a>
