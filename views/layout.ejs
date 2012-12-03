@@ -27,13 +27,15 @@
 				// select the tab based on the URL
 				var path = window.location.pathname;
 				if (path == '/') {
-					$('.home').removeClass('home').addClass('homeselected');
+					$('#home').addClass('menuitem_selected');
 				} else if (path.substring(0, 6) === '/books') {
-					$('.novels').removeClass('novels').addClass('novelsselected');
+					$('#novels').addClass('menuitem_selected');
 				} else if (path.substring(0, 8) === '/stories') {
-					$('.stories').removeClass('stories').addClass('storiesselected');
+					$('#stories').addClass('menuitem_selected');
 				} else if (path.substring(0, 5) === '/blog') {
-					$('.blog').removeClass('blog').addClass('blogselected');
+					$('#blog').addClass('menuitem_selected');
+				} else if (path.substring(0, 5) === '/bio') {
+					$('#bio').addClass('menuitem_selected');
 				}
 
 			});
@@ -61,16 +63,19 @@
 			</div>
 				<div id="menu">
 				  <a href="/">
-				  	<div class="home">Home</div>
+				  	<div id="home" class="menuitem">Home</div>
 				  </a>
 				  <a href="/books">
-				  	<div class="novels">Novels</div>
+				  	<div id="novels" class="menuitem">Novels</div>
 				  </a>
 				  <a href="/stories">
-				  	<div class="stories">Stories</div>
+				  	<div id="stories" class="menuitem">Stories</div>
 				  </a>
 				  <a href="/blog">
-				  	<div class="blog">Blog</div>
+				  	<div id="blog" class="menuitem">Blog</div>
+				  </a>
+				  <a href="/bio">
+				  	<div id="bio" class="menuitem">Bio</div>
 				  </a>
 				</div>
 			</div>

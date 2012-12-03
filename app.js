@@ -56,6 +56,7 @@ app.get('/stories', routes.stories);
 app.get('/stories/:id', routes.story);
 app.get('/blog', blogroutes.blog);
 app.get('/blog/:id', blogroutes.blogEntry);
+app.get('/bio', routes.bio);
 app.get('/scraper', routes.urlscrape);
 
 // login paths

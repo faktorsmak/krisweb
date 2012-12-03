@@ -124,6 +124,9 @@ exports.story = function(req, res) {
   	}); 	
 }
 
+exports.bio = function(req, res) {
+	res.render('bio', { title : 'Kristina Zakrzewski Bio' });
+}
 
 // Admin handlers
 

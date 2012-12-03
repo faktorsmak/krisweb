@@ -1,0 +1,244 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'contextify' ]
+2 info using npm@1.1.48
+3 info using node@v0.8.6
+4 verbose config file /Users/zakrzewski/.npmrc
+5 verbose config file /usr/local/etc/npmrc
+6 verbose config file /usr/local/lib/node_modules/npm/npmrc
+7 verbose read json /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/package.json
+8 warn package.json application-name@0.0.1 No README.md file found!
+9 verbose read json /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/ejs/package.json
+10 verbose read json /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/express/package.json
+11 verbose read json /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/express-ejs-layouts/package.json
+12 verbose read json /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/jsdom/package.json
+13 verbose read json /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/mongodb/package.json
+14 verbose read json /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/mongoose/package.json
+15 verbose read json /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/mongoskin/package.json
+16 verbose read json /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/nodemon/package.json
+17 verbose read json /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/stylus/package.json
+18 verbose from cache /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/package.json
+19 verbose readDependencies using package.json deps
+20 verbose cache add [ 'contextify', null ]
+21 silly cache add name=undefined spec="contextify" args=["contextify",null]
+22 verbose parsed url { pathname: 'contextify',
+22 verbose parsed url   path: 'contextify',
+22 verbose parsed url   href: 'contextify' }
+23 silly lockFile e90e8b6a-contextify contextify
+24 verbose lock contextify /Users/zakrzewski/.npm/e90e8b6a-contextify.lock
+25 silly lockFile e90e8b6a-contextify contextify
+26 verbose addNamed [ 'contextify', '' ]
+27 verbose addNamed [ null, '' ]
+28 silly lockFile 902bbeb2-contextify contextify@
+29 verbose lock contextify@ /Users/zakrzewski/.npm/902bbeb2-contextify.lock
+30 silly addNameRange { name: 'contextify', range: '', hasData: false }
+31 verbose url raw contextify
+32 verbose url resolving [ 'https://registry.npmjs.org/', './contextify' ]
+33 verbose url resolved https://registry.npmjs.org/contextify
+34 info retry registry request attempt 1 at 19:55:56
+35 verbose etag "DNR5V3GSRV14XCIV2UAX7UMK"
+36 http GET https://registry.npmjs.org/contextify
+37 http 304 https://registry.npmjs.org/contextify
+38 silly registry.get cb [ 304,
+38 silly registry.get   { server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+38 silly registry.get     etag: '"DNR5V3GSRV14XCIV2UAX7UMK"',
+38 silly registry.get     date: 'Wed, 29 Aug 2012 23:55:54 GMT',
+38 silly registry.get     'content-length': '0' } ]
+39 verbose etag contextify from cache
+40 silly addNameRange number 2 { name: 'contextify', range: '', hasData: true }
+41 silly addNameRange versions [ 'contextify',
+41 silly addNameRange   [ '0.0.2',
+41 silly addNameRange     '0.0.3',
+41 silly addNameRange     '0.0.4',
+41 silly addNameRange     '0.0.5',
+41 silly addNameRange     '0.0.6',
+41 silly addNameRange     '0.0.7',
+41 silly addNameRange     '0.1.0',
+41 silly addNameRange     '0.1.1',
+41 silly addNameRange     '0.1.2',
+41 silly addNameRange     '0.1.3' ] ]
+42 verbose addNamed [ 'contextify', '0.1.3' ]
+43 verbose addNamed [ '0.1.3', '0.1.3' ]
+44 silly lockFile 7770d4b3-contextify-0-1-3 contextify@0.1.3
+45 verbose lock contextify@0.1.3 /Users/zakrzewski/.npm/7770d4b3-contextify-0-1-3.lock
+46 verbose read json /Users/zakrzewski/.npm/contextify/0.1.3/package/package.json
+47 silly lockFile 7770d4b3-contextify-0-1-3 contextify@0.1.3
+48 silly lockFile 902bbeb2-contextify contextify@
+49 silly resolved [ { name: 'contextify',
+49 silly resolved     version: '0.1.3',
+49 silly resolved     description: 'Turn an object into a persistent execution context.',
+49 silly resolved     author: { name: 'Brian McDaniel', email: 'brianmcd05@gmail.com' },
+49 silly resolved     contributors: [ [Object] ],
+49 silly resolved     keywords: [ 'context', 'vm' ],
+49 silly resolved     repository:
+49 silly resolved      { type: 'git',
+49 silly resolved        url: 'https://github.com/brianmcd/contextify.git' },
+49 silly resolved     main: './lib/contextify',
+49 silly resolved     scripts: { test: 'nodeunit test/', install: 'node-gyp rebuild' },
+49 silly resolved     engines: { node: '>=0.4.0' },
+49 silly resolved     licenses: [ [Object] ],
+49 silly resolved     dependencies: { bindings: '*' },
+49 silly resolved     devDependencies: { nodeunit: '>=0.5.x' },
+49 silly resolved     gypfile: true,
+49 silly resolved     readme: '# Contextify\n\nTurn an object into a V8 execution context.  A contextified object acts as the global \'this\' when executing scripts in its context.  Contextify adds 3 methods to the contextified object: run(code, filename), getGlobal(), and dispose().  The main difference between Contextify and Node\'s vm methods is that Contextify allows asynchronous functions to continue executing in the Contextified object\'s context.  See vm vs. Contextify below for more discussion.\n\n## Examples\n```javascript\nvar Contextify = require(\'contextify\');\nvar sandbox = { console : console, prop1 : \'prop1\'};\nContextify(sandbox);\nsandbox.run(\'console.log(prop1);\');\nsandbox.dispose(); // free the resources allocated for the context.\n```\n\n```javascript\nvar sandbox = Contextify(); // returns an empty contextified object.\nsandbox.run(\'var x = 3;\');\nconsole.log(sandbox.x); // prints 3\nsandbox.dispose();\n```\n\n```javascript\nvar sandbox = Contextify({setTimeout : setTimeout});\nsandbox.run("setTimeout(function () { x = 3; }, 5);");\nconsole.log(sandbox.x); // prints undefined\nsetTimeout(function () {\n    console.log(sandbox.x); // prints 3\n    sandbox.dispose();\n}, 10);\n```\n## Details\n\n**Contextify([sandbox])**\n\n    sandbox - The object to contextify, which will be modified as described below\n              If no sandbox is specified, an empty object will be allocated and used instead.\n\n    Returns the contextified object.  It doesn\'t make a copy, so if you already have a reference\n    to the sandbox, you don\'t need to catch the return value.\n\nA Contextified object has 2 methods added to it:\n\n**run(code, [filename])**\n\n    code - string containing JavaScript to execute\n    filename  - an optional filename for debugging.\n\n    Runs the code in the Contextified object\'s context.\n\n**getGlobal()**\n\nReturns the actual global object for the V8 context.  The global object is initialized with interceptors (discussed below) which forward accesses on it to the contextified object.  This means the contextified object acts like the global object in most cases.  Sometimes, though, you need to make a reference to the actual global object.\n\nFor example:\n\n```javascript\nvar window = Contextify({console : console});\nwindow.window = window;\nwindow.run("console.log(window === this);");\n// prints false.\n```\n\n```javascript\nvar window = Contextify({console : console});\nwindow.window = window.getGlobal();\nwindow.run("console.log(window === this);");\n// prints true\n```\n\nThe global object returned by getGlobal() can be treated like the contextified sandbox object, except that defining getters/setters will not work on it.  Define getters and setters on the actual sandbox object instead.\n\n**dispose()**\n\nFrees the memory allocated for the underlying V8 context.  If you don\'t call this when you\'re done, the V8 context memory will leak, as will the sandbox memory, since the context\'s global stores a strong reference to the sandbox object.  You can still use your sandbox object after calling dispose(), but it\'s unsafe to use a global previously returned from getGlobal().  run, getGlobal, and dispose will be removed from the sandbox object.\n\n## Install\n\n    npm install contextify\n\n## require(\'vm\') vs. Contextify\n\nNode\'s vm functions (runInContext etc) work by copying the values from the sandbox object onto a context\'s global object, executing the passed in script, then copying the results back.  This means that scripts that create asynchronous functions (using mechanisms like setTimeout) won\'t have see the results of executing those functions, since the copying in/out only occurs during an explicit call to runInContext and friends.  \n\nContextify creates a V8 context, and uses interceptors (see: http://code.google.com/apis/v8/embed.html#interceptors) to forward global object accesses to the sandbox object.  This means there is no copying in or out, so asynchronous functions have the expected effect on the sandbox object.  \n\n## Tests\n\nTesting is done with nodeunit.  Run the tests with\n\n    nodeunit test/\n\nOutput: \n\n    OK: 92 assertions (27ms)\n\n\n## Building\n\n    node-waf configure build\n\n## Acknowledgments\n\nInspiration taken from Assaf\'s Zombie.js context solution: https://github.com/assaf/zombie\n',
+49 silly resolved     _id: 'contextify@0.1.3',
+49 silly resolved     _from: 'contextify' } ]
+50 info install contextify@0.1.3 into /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb
+51 info installOne contextify@0.1.3
+52 verbose from cache /Users/zakrzewski/.npm/contextify/0.1.3/package/package.json
+53 info /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify unbuild
+54 verbose read json /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/package.json
+55 verbose tar unpack /Users/zakrzewski/.npm/contextify/0.1.3/package.tgz
+56 silly lockFile ed9f7266--krisweb-node-modules-contextify /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify
+57 verbose lock /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify /Users/zakrzewski/.npm/ed9f7266--krisweb-node-modules-contextify.lock
+58 silly gunzTarPerm modes [ '755', '644' ]
+59 silly gunzTarPerm extractEntry package.json
+60 silly gunzTarPerm extractEntry .npmignore
+61 silly gunzTarPerm extractEntry README.md
+62 silly gunzTarPerm extractEntry binding.gyp
+63 silly gunzTarPerm extractEntry changelog
+64 silly gunzTarPerm extractEntry lib/contextify.js
+65 silly gunzTarPerm extractEntry LICENSE.txt
+66 silly gunzTarPerm extractEntry src/contextify.cc
+67 silly gunzTarPerm extractEntry test/contextify.js
+68 silly gunzTarPerm extractEntry wscript
+69 verbose read json /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/package.json
+70 silly lockFile ed9f7266--krisweb-node-modules-contextify /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify
+71 info preinstall contextify@0.1.3
+72 verbose from cache /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/package.json
+73 verbose readDependencies using package.json deps
+74 verbose from cache /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/package.json
+75 verbose readDependencies using package.json deps
+76 verbose cache add [ 'bindings@*', null ]
+77 silly cache add name=undefined spec="bindings@*" args=["bindings@*",null]
+78 verbose parsed url { pathname: 'bindings@*',
+78 verbose parsed url   path: 'bindings@*',
+78 verbose parsed url   href: 'bindings@*' }
+79 silly cache add name="bindings" spec="*" args=["bindings","*"]
+80 verbose parsed url { pathname: '*', path: '*', href: '*' }
+81 verbose addNamed [ 'bindings', '*' ]
+82 verbose addNamed [ null, '' ]
+83 silly lockFile a3858fc2-bindings bindings@*
+84 verbose lock bindings@* /Users/zakrzewski/.npm/a3858fc2-bindings.lock
+85 silly addNameRange { name: 'bindings', range: '', hasData: false }
+86 verbose url raw bindings
+87 verbose url resolving [ 'https://registry.npmjs.org/', './bindings' ]
+88 verbose url resolved https://registry.npmjs.org/bindings
+89 info retry registry request attempt 1 at 19:55:57
+90 verbose etag "1VQ5Q5SYHAX5F95YS1R6ARS24"
+91 http GET https://registry.npmjs.org/bindings
+92 http 304 https://registry.npmjs.org/bindings
+93 silly registry.get cb [ 304,
+93 silly registry.get   { server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+93 silly registry.get     etag: '"1VQ5Q5SYHAX5F95YS1R6ARS24"',
+93 silly registry.get     date: 'Wed, 29 Aug 2012 23:55:54 GMT',
+93 silly registry.get     'content-length': '0' } ]
+94 verbose etag bindings from cache
+95 silly addNameRange number 2 { name: 'bindings', range: '', hasData: true }
+96 silly addNameRange versions [ 'bindings',
+96 silly addNameRange   [ '0.0.1',
+96 silly addNameRange     '0.1.0',
+96 silly addNameRange     '0.1.1',
+96 silly addNameRange     '0.2.0',
+96 silly addNameRange     '0.2.1',
+96 silly addNameRange     '0.2.2',
+96 silly addNameRange     '0.2.3',
+96 silly addNameRange     '0.2.4',
+96 silly addNameRange     '0.3.0',
+96 silly addNameRange     '0.4.0',
+96 silly addNameRange     '1.0.0' ] ]
+97 verbose addNamed [ 'bindings', '1.0.0' ]
+98 verbose addNamed [ '1.0.0', '1.0.0' ]
+99 silly lockFile f01e5454-bindings-1-0-0 bindings@1.0.0
+100 verbose lock bindings@1.0.0 /Users/zakrzewski/.npm/f01e5454-bindings-1-0-0.lock
+101 verbose read json /Users/zakrzewski/.npm/bindings/1.0.0/package/package.json
+102 silly lockFile f01e5454-bindings-1-0-0 bindings@1.0.0
+103 silly lockFile a3858fc2-bindings bindings@*
+104 silly resolved [ { name: 'bindings',
+104 silly resolved     description: 'Helper module for loading your native module\'s .node file',
+104 silly resolved     keywords: [ 'native', 'addon', 'bindings', 'gyp', 'waf', 'c', 'c++' ],
+104 silly resolved     version: '1.0.0',
+104 silly resolved     author:
+104 silly resolved      { name: 'Nathan Rajlich',
+104 silly resolved        email: 'nathan@tootallnate.net',
+104 silly resolved        url: 'http://tootallnate.net' },
+104 silly resolved     repository:
+104 silly resolved      { type: 'git',
+104 silly resolved        url: 'git://github.com/TooTallNate/node-bindings.git' },
+104 silly resolved     main: './bindings.js',
+104 silly resolved     readme: 'node-bindings\n=============\n### Helper module for loading your native module\'s .node file\n\nThis is a helper module for authors of Node.js native addon modules.\nIt is basically the "swiss army knife" of `require()`ing your native module\'s\n`.node` file.\n\nThroughout the course of Node\'s native addon history, addons have ended up being\ncompiled in a variety of different places, depending on which build tool and which\nversion of node was used. To make matters worse, now the _gyp_ build tool can\nproduce either a _Release_ or _Debug_ build, each being built into different\nlocations.\n\nThis module checks _all_ the possible locations that a native addon would be built\nat, and returns the first one that loads successfully.\n\n\nInstallation\n------------\n\nInstall with `npm`:\n\n``` bash\n$ npm install bindings\n```\n\nOr add it to the `"dependencies"` section of your _package.json_ file.\n\n\nExample\n-------\n\n`require()`ing the proper bindings file for the current node version, platform\nand architecture is as simple as:\n\n``` js\nvar bindings = require(\'bindings\')(\'binding.node\')\n\n// Use your bindings defined in your C files\nbindings.your_c_function()\n```\n\n\nNice Error Output\n-----------------\n\nWhen the `.node` file could not be loaded, `node-bindings` throws an Error with\na nice error message telling you exactly what was tried. You can also check the\n`err.tries` Array property.\n\n```\nError: Could not load the bindings file. Tried:\n → /Users/nrajlich/ref/build/binding.node\n → /Users/nrajlich/ref/build/Debug/binding.node\n → /Users/nrajlich/ref/build/Release/binding.node\n → /Users/nrajlich/ref/out/Debug/binding.node\n → /Users/nrajlich/ref/Debug/binding.node\n → /Users/nrajlich/ref/out/Release/binding.node\n → /Users/nrajlich/ref/Release/binding.node\n → /Users/nrajlich/ref/build/default/binding.node\n → /Users/nrajlich/ref/compiled/0.8.2/darwin/x64/binding.node\n    at bindings (/Users/nrajlich/ref/node_modules/bindings/bindings.js:84:13)\n    at Object.<anonymous> (/Users/nrajlich/ref/lib/ref.js:5:47)\n    at Module._compile (module.js:449:26)\n    at Object.Module._extensions..js (module.js:467:10)\n    at Module.load (module.js:356:32)\n    at Function.Module._load (module.js:312:12)\n    ...\n```\n\n\nLicense\n-------\n\n(The MIT License)\n\nCopyright (c) 2012 Nathan Rajlich &lt;nathan@tootallnate.net&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\'Software\'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \'AS IS\', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n',
+104 silly resolved     _id: 'bindings@1.0.0',
+104 silly resolved     _from: 'bindings@*' } ]
+105 info install bindings@1.0.0 into /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify
+106 info installOne bindings@1.0.0
+107 verbose from cache /Users/zakrzewski/.npm/bindings/1.0.0/package/package.json
+108 info /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/node_modules/bindings unbuild
+109 verbose read json /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/node_modules/bindings/package.json
+110 verbose tar unpack /Users/zakrzewski/.npm/bindings/1.0.0/package.tgz
+111 silly lockFile ca60e225-contextify-node-modules-bindings /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/node_modules/bindings
+112 verbose lock /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/node_modules/bindings /Users/zakrzewski/.npm/ca60e225-contextify-node-modules-bindings.lock
+113 silly gunzTarPerm modes [ '755', '644' ]
+114 silly gunzTarPerm extractEntry package.json
+115 silly gunzTarPerm extractEntry README.md
+116 silly gunzTarPerm extractEntry bindings.js
+117 verbose read json /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/node_modules/bindings/package.json
+118 silly lockFile ca60e225-contextify-node-modules-bindings /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/node_modules/bindings
+119 info preinstall bindings@1.0.0
+120 verbose from cache /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/node_modules/bindings/package.json
+121 verbose readDependencies using package.json deps
+122 verbose from cache /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/node_modules/bindings/package.json
+123 verbose readDependencies using package.json deps
+124 silly resolved []
+125 verbose about to build /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/node_modules/bindings
+126 info build /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/node_modules/bindings
+127 verbose from cache /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/node_modules/bindings/package.json
+128 verbose linkStuff [ false,
+128 verbose linkStuff   false,
+128 verbose linkStuff   false,
+128 verbose linkStuff   '/Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/node_modules' ]
+129 info linkStuff bindings@1.0.0
+130 verbose linkBins bindings@1.0.0
+131 verbose linkMans bindings@1.0.0
+132 verbose rebuildBundles bindings@1.0.0
+133 info install bindings@1.0.0
+134 info postinstall bindings@1.0.0
+135 verbose about to build /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify
+136 info build /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify
+137 verbose from cache /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/package.json
+138 verbose linkStuff [ false,
+138 verbose linkStuff   false,
+138 verbose linkStuff   false,
+138 verbose linkStuff   '/Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules' ]
+139 info linkStuff contextify@0.1.3
+140 verbose linkBins contextify@0.1.3
+141 verbose linkMans contextify@0.1.3
+142 verbose rebuildBundles contextify@0.1.3
+143 verbose rebuildBundles [ 'bindings' ]
+144 info install contextify@0.1.3
+145 verbose unsafe-perm in lifecycle false
+146 verbose set uid from=0 to=501
+147 silly exec sh "-c" "node-gyp rebuild"
+148 silly sh,-c,node-gyp rebuild,/Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify spawning
+149 info contextify@0.1.3 Failed to exec install script
+150 info /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify unbuild
+151 verbose from cache /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules/contextify/package.json
+152 info preuninstall contextify@0.1.3
+153 info uninstall contextify@0.1.3
+154 verbose true,/Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules,/Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb/node_modules unbuild contextify@0.1.3
+155 info postuninstall contextify@0.1.3
+156 error contextify@0.1.3 install: `node-gyp rebuild`
+156 error `sh "-c" "node-gyp rebuild"` failed with 1
+157 error Failed at the contextify@0.1.3 install script.
+157 error This is most likely a problem with the contextify package,
+157 error not with npm itself.
+157 error Tell the author that this fails on your system:
+157 error     node-gyp rebuild
+157 error You can get their info via:
+157 error     npm owner ls contextify
+157 error There is likely additional logging output above.
+158 error System Darwin 12.0.0
+159 error command "node" "/usr/local/bin/npm" "install" "contextify"
+160 error cwd /Users/zakrzewski/Documents/Aptana Studio 3 Workspace/krisweb/krisweb
+161 error node -v v0.8.6
+162 error npm -v 1.1.48
+163 error code ELIFECYCLE
+164 verbose exit [ 1, true ]
