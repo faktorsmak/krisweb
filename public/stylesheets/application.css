@@ -70,7 +70,6 @@ a:hover {
 #bottomhalf {
 	overflow:hidden;
 	margin-top: 5px;
-	border:1px solid #efefef;
 	border-radius: 5px;
 	padding:3px;
 }
@@ -135,8 +134,8 @@ a:hover {
 
 .booklist {
 	display:block;
-	margin:0px 0px 0px 0px;
-	padding:0px 10px 0px 10px;
+	margin:0px 0px 30px 0px;
+	padding:0px 10px 30px 10px;
 	border-bottom:1px solid #E3E3E3;
 	overflow:auto;
 }
@@ -158,8 +157,8 @@ a:hover {
 
 .booklistlast {
 	display:block;
-	margin:0px 0px 0px 0px;
-	padding:0px 10px 0px 10px;
+	margin:0px 0px 20px 0px;
+	padding:0px 10px 20px 10px;
 	overflow:auto;
 }
 .booklistlast:hover {
@@ -198,7 +197,7 @@ a:hover {
 
 .menuitem {
 	border-radius: 5px 5px 0px 0px;
-	border: 1px solid #6a7b4c;
+	border: 1px solid gray;
 	width: 80px;
 	background-color:#f7f6f1;
 	float:left;
@@ -241,7 +240,7 @@ div .bookdescription {
 	position: fixed;
 	left: 500px;
 	top: 50px;
-	border: 1px solid #6a7b4c;
+	border: 1px solid gray;
 	padding:0px 10px 10px;
 	display:none;
 	background-color: #ffebb5;
@@ -253,12 +252,12 @@ div .bookdescription {
 .bookicon {
 	margin: 8px 25px 5px 10px;
 	padding: -1px;
-	box-shadow: 2px 2px 4px #5e5e5e;
+	box-shadow: 2px 2px 4px #b3b3b3;
 }
 .bookicon:hover {
-	margin: 7px 27px 6px 8px;
+	margin: 7px 26px 6px 9px;
 	padding: -1px;
-	box-shadow: 4px 4px 6px #5e5e5e;
+	box-shadow: 4px 4px 6px #b3b3b3;
 }
 
 .reviews {
@@ -272,15 +271,18 @@ div .bookdescription {
 }
 
 .highlightBox {
-	border: 1px solid #6a7b4c;
+	border: 1px solid gray;
 	border-radius: 3px;
-	padding: 1px 3px 1px 3px;
-	background-color:#f7f6f1;
+	padding: 10px;
+	/* background-color:#f7f6f1; */
+	background-color:#f8e4c1;
 	box-shadow: 1px 1px 2px #5e5e5e;
 }
+/*
 .highlightBox:hover {
 	background-color:#f8e4c1;
 }
+*/
 .highlightBox a:link {
 	color:#d28327;
 	text-decoration:none;
@@ -296,13 +298,13 @@ div .bookdescription {
 
 .sideBox {
 	border-radius: 5px 5px 0px 0px;
-	border: 1px solid #6a7b4c;
+	border: 1px solid gray;
 	box-shadow: 1px 1px 2px #5e5e5e;
 	width: 300px;
 }
 .sideBoxTitle {
 	border-radius: 5px 5px 0px 0px;
-	border-bottom: 1px solid #6a7b4c;
+	border-bottom: 1px solid gray;
 	background-color:#f8e4c1;
 }
 .sideBoxContent table {

@@ -33,7 +33,7 @@ $(document).ready(function() {
 <% for(var i=0; i<blogentries.length; i++) { 
     if (i == blogentries.length-1) {
 %>
-	<div class="booklist booklistlast" id="<%= blogentries[i]._id %>">
+	<div class="booklistlast" id="<%= blogentries[i]._id %>">
 <% } else { %>
 	<div class="booklist" id="<%= blogentries[i]._id %>">
 <% } %>
