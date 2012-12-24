@@ -1,7 +1,8 @@
-<% for(var i=0; i<stories.length; i++) { 
+<% for(var i=0; i<stories.length; i++) { %>
+	<a class="booklistlink" href="/stories/<%= stories[i].id %>">
+<% 
     if (i == stories.length-1) {
 %>
-	<a class="booklistlink" href="/stories/<%= stories[i].id %>">
 	<div class="booklistlast">
 <% } else { %>
 	<div class="booklist">

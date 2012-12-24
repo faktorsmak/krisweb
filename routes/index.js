@@ -35,7 +35,7 @@ var users = {
 hash('alex21', function(err, salt, hash){
   if (err) throw err;
   // store the salt & hash in the "db"
-  console.log("getting ready to store salt and hash in db");
+  //console.log("getting ready to store salt and hash in db");
   users.kris.salt = salt;
   users.kris.hash = hash;
 });
@@ -51,7 +51,7 @@ exports.index = function(req, res) {
 
 exports.books = function(req, res) {
   
-    console.log("books got called with ID of: " + req.params.id);
+    //console.log("books got called with ID of: " + req.params.id);
   	Book.find(function(err, books) { 
     	if (err) { 
             console.log(err);
@@ -66,13 +66,13 @@ exports.books = function(req, res) {
 }
 
 exports.book = function(req, res) {
-	console.log("get book with id of " + req.params.id);
+	//console.log("get book with id of " + req.params.id);
   	Book.findOne({ _id : req.params.id }, function(err, book) { 
     	if (err) { 
             console.log(err);
        } else {
        		if (book) {
-	       		console.log('found book with id=' + book._id);
+	       		//console.log('found book with id=' + book._id);
 	       		res.render('book', { title : book.title, book : book });
        		} else {
        			res.render('notfound', {title : 'Page Not Found'});
@@ -108,13 +108,13 @@ exports.stories = function(req, res) {
 }
 
 exports.story = function(req, res) {
-	console.log("get story with id of " + req.params.id);
+	//console.log("get story with id of " + req.params.id);
   	Story.findOne({ _id : req.params.id }, function(err, story) { 
     	if (err) { 
             console.log(err);
        } else {
        		if (story) {
-	       		console.log('found story with id=' + story._id);
+	       		//console.log('found story with id=' + story._id);
 	       		story.content = story.content.replace(/\n/g, '<br />');
 	       		res.render('story', { title : story.title, story : story });
        		} else {
@@ -161,7 +161,7 @@ exports.adminLoginGet = function(req, res){
 
 exports.adminLoginPost = function(req, res) {
 	authenticate(req.body.username, req.body.password, function(err, user) {
-		console.log("in callback function after authenticate");
+		//console.log("in callback function after authenticate");
 		if (user) {
 			// Regenerate session when signing in
 			// to prevent fixation
@@ -186,16 +186,16 @@ exports.adminStoriesNew = function(req,res) {
 exports.adminStoriesNewPost = function(req,res) {
 	var story = new Story();
 	story.title = req.body.title;
-	console.log("story title: " + story.title);
+	//console.log("story title: " + story.title);
 	story.content = req.body.content;
-	console.log("story content: " + story.content);
+	//console.log("story content: " + story.content);
 	story.image = req.body.image;
-	console.log("story image: " + story.image);
+	//console.log("story image: " + story.image);
 	story.submitdate = new Date();
-	console.log("story date: " + story.date);
+	//console.log("story date: " + story.date);
 	story.save(function(err, newStory) {
 		if (err) throw err;
-  		console.log("Submitted a story with ID: " + newStory._id);
+  		//console.log("Submitted a story with ID: " + newStory._id);
 	    // rename the uploaded image (if there was one) to use the ID
 	    var tmp_path = req.files.image.path;
 	    // set where the file should actually exists - in this case it is in the "images" directory
@@ -238,16 +238,16 @@ exports.urlscrape = function(req, res) {
 
 // Authenticate using our plain-object database of doom!
 function authenticate(name, pass, fn) {
-	console.log("in authenticate method");
+	//console.log("in authenticate method");
   if (!module.parent) console.log('authenticating %s:%s', name, pass);
   var user = users[name];
-  console.log("getting ready to validate user " + user);
+  //console.log("getting ready to validate user " + user);
   // query the db for the given username
   if (!user) return fn(new Error('cannot find user'));
   // apply the same algorithm to the POSTed password, applying
   // the hash against the pass / salt, if there is a match we
   // found the user
-  console.log("getting ready to call hash function");
+  //console.log("getting ready to call hash function");
   hash(pass, user.salt, function(err, hash){
     if (err) return fn(err);
     if (hash == user.hash) return fn(null, user);
