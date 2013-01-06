@@ -1,0 +1,16 @@
+<form method='post' enctype='multipart/form-data' action='/admin/stories/edit'>
+	<ul>
+	  <li class='formlist'>Title:</li>
+	  <li class='formlist'><input type='text' name='title' size='100' maxlength='100' value='<%= story.title %>'/></li>
+	  <li class='formlist'>Content:</li>
+	  <li class='formlist'><textarea name='content' rows='30' cols='100'><%= story.content %></textarea></li>
+	  <li class='formlist'>Image (optional):</li>
+	  <li class='formlist'><input type='file' name='image'/></li>
+	  <li class='formlist'><input type='submit' name='submit' value='submit'/></li>
+	</ul>
+	<input type="hidden" name="id" value="<%= story.id %>"/>
+
+</form>
+<%- contentFor('contenttitle') %>
+Edit a Story
+<%- contentFor('contentright') %>

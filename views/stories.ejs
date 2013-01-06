@@ -11,6 +11,12 @@
 	  <h2><%= stories[i].title %></h2>
 	  <h5><%= stories[i].submitdate.toDateString() %></h5>
 	  <p><%= stories[i].content %>...(click to read more)</p>
+	  
+		<% if (user) { %>
+			<div class="adminops">
+				<a href="/admin/stories/edit/<%= stories[i].id %>"><img src="/images/icons/edit.png" alt="Edit" width="20" /></a>
+			</div>
+		<% } %>
 	</div>
 	</a>
 <% } %>

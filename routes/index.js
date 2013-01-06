@@ -102,7 +102,7 @@ exports.stories = function(req, res) {
        		for (var i=0; i < stories.length; i++ ) {
        			stories[i].content = truncate(stories[i].content, 290);
        		}
-       		res.render('stories', { title : 'stories', stories : stories });
+       		res.render('stories', { title : 'stories', stories : stories, user : req.session.user });
        }
   	}); 
 }
@@ -116,7 +116,7 @@ exports.story = function(req, res) {
        		if (story) {
 	       		//console.log('found story with id=' + story._id);
 	       		story.content = story.content.replace(/\n/g, '<br />');
-	       		res.render('story', { title : story.title, story : story });
+	       		res.render('story', { title : story.title, story : story, user : req.session.user });
        		} else {
        			res.render('notfound', {title : 'Page Not Found'});
        		}
@@ -189,27 +189,92 @@ exports.adminStoriesNewPost = function(req,res) {
 	//console.log("story title: " + story.title);
 	story.content = req.body.content;
 	//console.log("story content: " + story.content);
-	story.image = req.body.image;
+	story.image = req.files.image.name;
 	//console.log("story image: " + story.image);
 	story.submitdate = new Date();
 	//console.log("story date: " + story.date);
 	story.save(function(err, newStory) {
 		if (err) throw err;
   		//console.log("Submitted a story with ID: " + newStory._id);
-	    // rename the uploaded image (if there was one) to use the ID
-	    var tmp_path = req.files.image.path;
-	    // set where the file should actually exists - in this case it is in the "images" directory
-	    var target_path = './krisweb/public/images/stories/' + newStory._id;
-	    // move the file from the temporary location to the intended location
-	    fs.rename(tmp_path, target_path, function(err) {
-	        if (err) throw err;
-	        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
-	        fs.unlink(tmp_path, function() {
-	            if (err) throw err;
-		  		res.redirect('/stories/' + newStory._id);
-	        });
-	    });
+  		if (story.image.length > 0) {
+		    // rename the uploaded image (if there was one) to use the ID
+		    var tmp_path = req.files.image.path;
+		    // set where the file should actually exists - in this case it is in the "images" directory
+		    var target_path = './krisweb/public/images/stories/' + newStory._id;
+		    // move the file from the temporary location to the intended location
+		    fs.rename(tmp_path, target_path, function(err) {
+		        if (err) throw err;
+		        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+		        fs.unlink(tmp_path, function() {
+		            if (err) throw err;
+			  		res.redirect('/stories/' + newStory._id);
+		        });
+		    });
+		  } else {
+		  	res.redirect('/stories/' + newStory._id);
+		  }
 	});
+}
+
+exports.adminStoriesEdit = function(req,res) {
+	//console.log("get story with id of " + req.params.id);
+  	Story.findOne({ _id : req.params.id }, function(err, story) { 
+    	if (err) { 
+            console.log(err);
+       		res.render('notfound', {title : 'Page Not Found'});
+       } else {
+       		if (story) {
+	       		//console.log('found story with id=' + story._id);
+				res.render('editstory', { title : 'Edit Story', story : story });
+       		} else {
+       			res.render('notfound', {title : 'Page Not Found'});
+       		}
+       }
+  	}); 	
+}
+
+exports.adminStoriesEditPost = function(req,res) {
+	//console.log("get story for update with id of " + req.body.id);
+  	Story.findOne({ _id : req.body.id }, function(err, story) { 
+    	if (err) { 
+            console.log(err);
+       		res.render('notfound', {title : 'Page Not Found'});
+       } else {
+       		if (story) {
+				story.title = req.body.title;
+				//console.log("story title: " + story.title);
+				story.content = req.body.content;
+				//console.log("story content: " + story.content);
+				story.image = req.files.image.name;
+				//console.log("story image: " + story.image);
+				
+				story.save(function(err) {
+					if (err) throw err;
+			  		console.log("Updated the story with ID: " + story.id);
+
+					if (story.image.length > 0) {
+					    var tmp_path = req.files.image.path;
+					    // set where the file should actually exists - in this case it is in the "images" directory
+					    var target_path = './krisweb/public/images/stories/' + story._id;
+					    // move the file from the temporary location to the intended location
+					    fs.rename(tmp_path, target_path, function(err) {
+					        if (err) throw err;
+					        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+					        fs.unlink(tmp_path, function() {
+					            if (err) throw err;
+								res.redirect('/stories/' + story._id);
+					        });
+					    });
+					} else {
+						res.redirect('/stories/' + story._id);
+					}
+				});
+
+       		} else {
+       			res.render('notfound', {title : 'Page Not Found'});
+       		}
+       }
+  	}); 	
 }
 
 

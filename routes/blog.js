@@ -133,7 +133,6 @@ exports.adminBlogEntriesEdit = function(req,res) {
        		}
        }
   	}); 	
-
 }
 
 exports.adminBlogEntriesEditPost = function(req,res) {

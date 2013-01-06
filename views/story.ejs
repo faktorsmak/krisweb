@@ -1,6 +1,13 @@
 <h2><%= story.title %></h2>
 <p><%- story.content %></p>
 <h5><%= story.submitdate.toDateString() %></h5>
+
+<% if (user) { %>
+	<div class="adminops">
+		<a href="/admin/stories/edit/<%= story.id %>"><img src="/images/icons/edit.png" alt="Edit" width="20" /></a>
+	</div>
+<% } %>
+
 <%- contentFor('contenttitle') %>
 <%= story.title %>
 <%- contentFor('contentright') %>

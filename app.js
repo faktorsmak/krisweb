@@ -30,7 +30,7 @@ app.configure(function(){
 });
 
 app.use(function(req, res, next){
-	console.log("in the middleware function");
+  //console.log("in the middleware function");
   var err = req.session.error
     , msg = req.session.success;
   delete req.session.error;
@@ -67,6 +67,8 @@ app.post('/login', routes.adminLoginPost);
 app.get('/admin', restrict, routes.adminIndex);
 app.get('/admin/stories/new', restrict, routes.adminStoriesNew);
 app.post('/admin/stories/new', restrict, routes.adminStoriesNewPost);
+app.get('/admin/stories/edit/:id', restrict, routes.adminStoriesEdit);
+app.post('/admin/stories/edit', restrict, routes.adminStoriesEditPost);
 
 app.get('/admin/blogentries/new', restrict, blogroutes.adminBlogEntriesNew);
 app.post('/admin/blogentries/new', restrict, blogroutes.adminBlogEntriesNewPost);
