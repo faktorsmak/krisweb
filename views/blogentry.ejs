@@ -1,9 +1,17 @@
 <h2><%= blogentry.title %></h2>
-<p><%- blogentry.content %></p>
 <h5><%= blogentry.submitdate.toDateString() %></h5>
+<p><%- blogentry.content %></p>
+<p><a href="/blog">&lt;&lt; Return to blog</a></p>
 <%- contentFor('contenttitle') %>
 <%= blogentry.title %>
 <% if (user) { %>
 		<a href="/admin/blogentries/edit/<%= blogentry.id %>">Edit this entry</a>
 <% } %>
 <%- contentFor('contentright') %>
+<% if (blogentry.image > 0) { %>
+<div>
+	<img align='center' style='max-width:290px;' src='/images/blog/<%= blogentry._id %>' />
+</div>
+<br/><br/>
+<% } %>
+<a href="/books/Cold_Coffee"><img src="/images/coldcoffee_ad3.png" width="300" /></a>

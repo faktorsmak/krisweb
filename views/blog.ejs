@@ -31,6 +31,7 @@ $(document).ready(function() {
 </script>
 
 <% for(var i=0; i<blogentries.length; i++) { 
+	blogentries[i].content = blogentries[i].content.replace(/\n/g, '<br />');
     if (i == blogentries.length-1) {
 %>
 	<div class="booklistlast" id="<%= blogentries[i]._id %>">
@@ -38,8 +39,11 @@ $(document).ready(function() {
 	<div class="booklist" id="<%= blogentries[i]._id %>">
 <% } %>
 	  <h2><%= blogentries[i].title %></h2>
-	  <h5><%= blogentries[i].submitdate.toDateString() %></h5>
-	  <p><%= blogentries[i].content %></p>
+	  <h5><a href="/blog/<%= blogentries[i].id %>"><%= blogentries[i].submitdate.toDateString() %></a></h5>
+	  <% if (blogentries[i].image > 0) { %>
+		  <img src="/images/blog/<%= blogentries[i].id %>" width="150px" align="right" class="bookicon"/>
+	  <% } %>
+	  <p><%- blogentries[i].content %></p>
 		<% if (user) { %>
 			<div class="adminops">
 				<a href="/admin/blogentries/edit/<%= blogentries[i].id %>"><img src="/images/icons/edit.png" alt="Edit" width="20" /></a>

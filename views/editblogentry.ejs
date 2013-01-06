@@ -4,6 +4,8 @@
 	  <li class='formlist'><input type='text' name='title' size='100' maxlength='100' value='<%= blogentry.title %>'/></li>
 	  <li class='formlist'>Content:</li>
 	  <li class='formlist'><textarea name='content' rows='15' cols='100'><%= blogentry.content %></textarea></li>
+	  <li class='formlist'>Image (optional):</li>
+	  <li class='formlist'><input type='file' name='image'/></li>
 	  <li class='formlist'><input type='submit' name='submit' value='submit'/></li>
 	</ul>
 	<input type="hidden" name="id" value="<%= blogentry.id %>"/>

@@ -10,6 +10,7 @@ var mongoose = require('mongoose'),
 var blogEntrySchema = new mongoose.Schema({
 		title:String,
 		content:String,
+		image:Number, /* size of the image */
 		link:String,
 		linktitle:String,
 		linkimage:String,
@@ -61,6 +62,7 @@ exports.blogEntry = function(req, res) {
        		if (blogentry) {
 	       		//console.log('found blog with id=' + blogentry._id);
 	       		blogentry.content = blogentry.content.replace(/\n/g, '<br />');
+	       		//console.log("image is: ", blogentry.image);
 	       		res.render('blogentry', { title : blogentry.title, blogentry : blogentry, user : req.session.user });
        		} else {
        			res.render('notfound', {title : 'Page Not Found'});
@@ -81,6 +83,9 @@ exports.adminBlogEntriesNewPost = function(req,res) {
 	entry.title = req.body.title;
 	//console.log("blog entry title: " + entry.title);
 	entry.content = req.body.content;
+	entry.image = req.files.image.size;
+	//console.log("entry image size is: ", req.files.image.size)
+
 	//console.log("blog entry content: " + entry.content);
 	// TODO: need to look at content and parse out URLs and scrape them for OpenGraph and set image and video links (first one only)
 	entry.link = '';
@@ -92,8 +97,24 @@ exports.adminBlogEntriesNewPost = function(req,res) {
 
 	entry.save(function(err, newEntry) {
 		if (err) throw err;
-  		//console.log("Submitted a blog entry with ID: " + newEntry._id);
-		res.redirect('/blog');
+
+		if (entry.image > 0) {
+	  		//console.log("Submitted a blog entry with ID: " + newEntry._id);
+		    var tmp_path = req.files.image.path;
+		    // set where the file should actually exists - in this case it is in the "images" directory
+		    var target_path = './krisweb/public/images/blog/' + newEntry._id;
+		    // move the file from the temporary location to the intended location
+		    fs.rename(tmp_path, target_path, function(err) {
+		        if (err) throw err;
+		        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+		        fs.unlink(tmp_path, function() {
+		            if (err) throw err;
+					res.redirect('/blog');
+		        });
+		    });
+		} else {
+			res.redirect('/blog');
+		}
 	});
 }
 
@@ -128,6 +149,9 @@ exports.adminBlogEntriesEditPost = function(req,res) {
 				//console.log("blog entry title: " + blogentry.title);
 				blogentry.content = req.body.content;
 				//console.log("blog entry content: " + blogentry.content);
+				blogentry.image = req.files.image.size;
+				//console.log("entry.image is: ", blogentry.image);
+				
 				// TODO: need to look at content and parse out URLs and scrape them for OpenGraph and set image and video links (first one only)
 				blogentry.link = '';
 				blogentry.linktitle = '';
@@ -138,7 +162,24 @@ exports.adminBlogEntriesEditPost = function(req,res) {
 				blogentry.save(function(err) {
 					if (err) throw err;
 			  		//console.log("Updated the blog entry with ID: " + blogentry.id);
-					res.redirect('/blog');
+
+					if (blogentry.image > 0) {
+				  		//console.log("Submitted a blog entry with ID: " + newEntry._id);
+					    var tmp_path = req.files.image.path;
+					    // set where the file should actually exists - in this case it is in the "images" directory
+					    var target_path = './krisweb/public/images/blog/' + blogentry._id;
+					    // move the file from the temporary location to the intended location
+					    fs.rename(tmp_path, target_path, function(err) {
+					        if (err) throw err;
+					        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+					        fs.unlink(tmp_path, function() {
+					            if (err) throw err;
+								res.redirect('/blog');
+					        });
+					    });
+					} else {
+						res.redirect('/blog');
+					}
 				});
 
        		} else {
