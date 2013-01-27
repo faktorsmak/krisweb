@@ -128,6 +128,9 @@ exports.bio = function(req, res) {
 	res.render('bio', { title : 'Kristina Zakrzewski Bio' });
 }
 
+exports.fbchannel = function(req, res) {
+	res.send('<script src="//connect.facebook.net/en_US/all.js"></script>');
+}
 // Admin handlers
 
 exports.restrict = function restrict(req, res, next) {

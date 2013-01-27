@@ -1,8 +1,12 @@
+<script language="javascript" src="/javascripts/blogcomments.js"></script>
+<script language="javascript" src="/javascripts/jquery.autogrowtextarea.js"></script>
+
 <script language="javascript">
 $(document).ready(function() {
+
 	$(".deleteentry").click(function() {
-		var deletedEntry = $(this).parents(".booklist");
-		var uri = '/blog/' + $(this).parents(".booklist").attr("id");
+		var deletedEntry = $(this).parents(".bloglist");
+		var uri = '/blog/' + $(this).parents(".bloglist").attr("id");
 		$("#deleteConfirm").dialog({ buttons: 
 										{ 
 											"Delete": function() {
@@ -27,17 +31,15 @@ $(document).ready(function() {
 										}
 									});
 	});
+	
+ 	var blogCommentWidget = new BlogCommentHandler({});
 });
 </script>
 
-<% for(var i=0; i<blogentries.length; i++) { 
+<% for(var i=0; i < blogentries.length; i++) { 
 	blogentries[i].content = blogentries[i].content.replace(/\n/g, '<br />');
-    if (i == blogentries.length-1) {
 %>
-	<div class="booklistlast" id="<%= blogentries[i]._id %>">
-<% } else { %>
-	<div class="booklist" id="<%= blogentries[i]._id %>">
-<% } %>
+	<div class="entry bloglist" id="<%= blogentries[i]._id %>">
 	  <h2><%= blogentries[i].title %></h2>
 	  <h5><a href="/blog/<%= blogentries[i].id %>"><%= blogentries[i].submitdate.toDateString() %></a></h5>
 	  <% if (blogentries[i].image > 0) { %>
@@ -52,6 +54,38 @@ $(document).ready(function() {
 		<% } %>
       <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.kristinazakrzewski.com/blog/<%= blogentries[i].id %>" data-via="k_zakrzewski">Tweet</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      <div class="comments-wrapper">
+        <ul class="comments-list">
+
+	        <li>
+		        <div class="comments-header">
+		        	<img class="icon" src="/images/comment.png" align="left" width="20" /> &nbsp;<strong>Comments</strong>
+		        </div>
+	        </li>
+<%	for (var j=0; j<blogentries[i].comments.length; j++) { %>
+	        <li class="user-comment" data-commentid="<%= blogentries[i].comments[j].id %>" data-commentuserid="<%= blogentries[i].comments[j].userid %>">
+				<a href="#"><div class="delete-x hidden">x</div></a>
+		        <div class="comment">
+		        	<img height="20" src="<%= blogentries[i].comments[j].userpic %>" /> <span class="hlight"><%= blogentries[i].comments[j].username %></span><br/>
+		        	<%= blogentries[i].comments[j].body %>
+		        </div>
+	        </li>
+<% } %>
+	        <li class="comments-footer">
+		        <div>
+		        	<a href="#" class="add-a-comment">Add a comment</a>
+		        </div>
+	        </li>
+	        <li class="add-comment" style="display:none;">
+	        	<div class="comment-user"></div>
+		        <div class="comment">
+		        	<textarea maxlength="500" class="textarea-grow" rows="1" cols="110" placeholder="Start typing here to add a comment"></textarea>
+		        	<input class="submit-comment" type="submit" name="Submit Comment" value="Submit Comment">
+		        	or <a class="cancel-comment" href="#">Cancel</a>
+		        </div>
+	        </li>
+	     </ul>
+      </div>
 	</div>
 <% } %>
 

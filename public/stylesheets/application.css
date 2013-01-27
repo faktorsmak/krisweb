@@ -54,7 +54,7 @@ a:hover {
 	padding: 0;
 	font-size:36px;
 	height: 40px;
-//	text-shadow: #dda859 1px 1px 2px
+	/*text-shadow: #dda859 1px 1px 2px*/
 }
 #kz h5 {
 	margin:0;
@@ -122,6 +122,9 @@ a:hover {
 	color:#dda859;
 }
 
+.hlight {
+	color:#D28327;
+}
 .contentLeftColumn1 {
 	float:left;
 	width: 240px;
@@ -163,6 +166,14 @@ a:hover {
 }
 .booklistlast:hover {
 	background-color:#f8e4c1;
+}
+
+.bloglist {
+	display:block;
+	margin:0px 0px 30px 0px;
+	padding:0px 10px 30px 10px;
+	border-bottom:1px solid #E3E3E3;
+	overflow:auto;
 }
 
 #contentright {
@@ -324,4 +335,49 @@ div .bookdescription {
 }
 .sideBoxContent .rowB {
 	background-color:#f7f6f1;
+}
+
+.icon {
+	vertical-align: middle;
+}
+.comments-wrapper {
+	border-top: 1px solid #efefef;
+	margin: 10px;
+	background-color: #F7F6F1;
+	font-size: 0.85em;
+	color: #666;
+}
+.comments-list {
+	list-style:none;
+	margin: 0;
+	padding: 0;
+}
+.comments-list li {
+	margin:2px;
+	padding:2px;
+	border-bottom: 1px solid #ddd;
+}
+.comments-header {
+	/*border-bottom: 1px dotted black;*/
+	padding: 2px;
+}
+.comment {
+	padding: 2px;
+}
+.comment-user {
+	padding: 2px;
+}
+.textarea-grow {
+	width: 99% !important;
+	min-height: 30px;
+	margin: 0;
+	padding: 2px;
+}
+.delete-x {
+	float:right;
+	padding:0px 2px 0px 2px;
+	border: 1px solid #666;
+}
+.hidden {
+	display:none;	
 }

@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<title>Kristina Zakrzewski</title>
+		<link rel="icon" type="image/ico" href="/images/coldcoffee_cover.png">
 		<LINK href="/stylesheets/application.css" rel="stylesheet" type="text/css">
 		<link type="text/css" href="/jquery-ui/css/ui-lightness/jquery-ui-1.8.24.custom.css" rel="Stylesheet" />
 
@@ -43,6 +44,85 @@
 
 	</head>
 	<body>
+		<div id="fb-details" style="display:none;" data-userid="" data-username="" data-loggedin="0"></div>
+
+
+		<!-- start facebook login code -->
+		
+		<div id="fb-root"></div>
+		<script>
+		/*
+		$(document).ready( function() {
+		  // Additional JS functions here
+		  window.fbAsyncInit = function() {
+		    FB.init({
+		      appId      : '312874575491115', // App ID
+		      channelUrl : '//www.kristinazakrzewski.com/channel.html', // Channel File
+		      status     : true, // check login status
+		      cookie     : true, // enable cookies to allow the server to access the session
+		      xfbml      : true  // parse XFBML
+		    });
+		
+		    // Additional init code here
+			FB.getLoginStatus(function(response) {
+			  if (response.status === 'connected') {
+			    // connected
+			    console.log('you are logged into fb', response);
+    			$('#fb-details').attr('data-loggedin', 1);
+			    testAPI();
+			  } else if (response.status === 'not_authorized') {
+			    // not_authorized
+			    console.log("not authorized");
+    			$('#fb-details').attr('data-loggedin', 0);
+			    
+			    //fb_login();
+			  } else {
+			    // not_logged_in
+			    console.log("not logged in");
+    			$('#fb-details').attr('data-loggedin', 0);
+			    
+			    //fb_login();
+			  }
+			 });
+ 
+		  };
+		  
+		  // Load the SDK Asynchronously
+		  (function(d){
+		     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+		     if (d.getElementById(id)) {return;}
+		     js = d.createElement('script'); js.id = id; js.async = true;
+		     js.src = "//connect.facebook.net/en_US/all.js";
+		     ref.parentNode.insertBefore(js, ref);
+		   }(document));
+		   
+		   var fb_login = function login() {
+			    FB.login(function(response) {
+			        if (response.authResponse) {
+			            // connected
+			            testAPI();
+			        } else {
+			            // cancelled
+			        }
+			    });
+			}
+
+			function testAPI() {
+ 			   console.log('Welcome!  Fetching your information.... ');
+    			FB.api('/me', function(response) {
+	    			$('#fb-details').attr('data-userid', response.id);
+	    			$('#fb-details').attr('data-username', response.name);
+	        		console.log('Good to see you, ' + response.name + '.');
+	        		console.log('entire response is', response);
+	    		});
+			}
+		});
+		*/
+		</script>
+			
+		<!-- end facebook login code -->
+	
+	
 		<div id="top"></div>
 		<div id="main">
 			<div id="tophalf">

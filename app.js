@@ -56,12 +56,16 @@ app.get('/stories', routes.stories);
 app.get('/stories/:id', routes.story);
 app.get('/blog', blogroutes.blog);
 app.get('/blog/:id', blogroutes.blogEntry);
+app.post('/blog/comment/delete', blogroutes.deleteComment);
+app.post('/blog/comment', blogroutes.addComment);
 app.get('/bio', routes.bio);
 app.get('/scraper', routes.urlscrape);
 
 // login paths
 app.get('/login', routes.adminLoginGet);
 app.post('/login', routes.adminLoginPost);
+
+app.get('/channel', routes.fbchannel);
 
 // admin paths
 app.get('/admin', restrict, routes.adminIndex);

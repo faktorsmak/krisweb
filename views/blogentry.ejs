@@ -1,3 +1,13 @@
+<script language="javascript" src="/javascripts/blogcomments.js"></script>
+<script language="javascript" src="/javascripts/jquery.autogrowtextarea.js"></script>
+
+<script language="javascript">
+$(document).ready(function() {
+ 	var blogCommentWidget = new BlogCommentHandler({});
+});
+</script>
+
+<div class="entry" id="<%= blogentry.id %>">
 <h2><%= blogentry.title %></h2>
 <h5><%= blogentry.submitdate.toDateString() %></h5>
 <p><%- blogentry.content %></p>
@@ -10,6 +20,40 @@
 <% } %>
 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.kristinazakrzewski.com/blog/<%= blogentry.id %>" data-via="k_zakrzewski">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+      <div class="comments-wrapper">
+        <ul class="comments-list">
+
+	        <li>
+		        <div class="comments-header">
+		        	<img class="icon" src="/images/comment.png" align="left" width="20" /> &nbsp;<strong>Comments</strong>
+		        </div>
+	        </li>
+<%	for (var j=0; j<blogentry.comments.length; j++) { %>
+	        <li class="user-comment" data-commentid="<%= blogentry.comments[j].id %>" data-commentuserid="<%= blogentry.comments[j].userid %>">
+				<a href="#"><div class="delete-x hidden">x</div></a>
+		        <div class="comment">
+		        	<img height="20" src="<%= blogentry.comments[j].userpic %>" /> <span class="hlight"><%= blogentry.comments[j].username %></span><br/>
+		        	<%= blogentry.comments[j].body %>
+		        </div>
+	        </li>
+<% } %>
+	        <li class="comments-footer">
+		        <div>
+		        	<a href="#" class="add-a-comment">Add a comment</a>
+		        </div>
+	        </li>
+	        <li class="add-comment" style="display:none;">
+	        	<div class="comment-user"></div>
+		        <div class="comment">
+		        	<textarea maxlength="500" class="textarea-grow" cols="110" placeholder="Start typing here to add a comment"></textarea>
+		        	<input class="submit-comment" type="submit" name="Submit Comment" value="Submit Comment">
+		        	or <a class="cancel-comment" href="#">Cancel</a>
+		        </div>
+	        </li>
+	     </ul>
+      </div>
+</div>
 
 <p><a href="/blog">&lt;&lt; Return to blog</a></p>
 <%- contentFor('contenttitle') %>

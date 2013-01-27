@@ -15,7 +15,16 @@ var blogEntrySchema = new mongoose.Schema({
 		linktitle:String,
 		linkimage:String,
 		linkdescription:String,
-		submitdate:Date
+		submitdate:Date,
+		comments: [{ 
+		            commentid: String,
+					body: String,
+					userid: String,
+                    username: String,
+					usertype: String, // facebook 
+					userpic: String,  // url to pic
+					date: Date 
+				}]
 });
 var BlogEntry = db.model('BlogEntry',blogEntrySchema);
 
@@ -71,6 +80,69 @@ exports.blogEntry = function(req, res) {
   	}); 	
 }
 
+exports.addComment = function(req, res) {
+//    console.log("in addComment", req);
+    var comment = JSON.parse(req.body.properties);
+    // comment has properties: blogid, userid, username, body
+    console.log(comment);
+    //res.json({success:true});
+    
+    BlogEntry.findOne({ _id : comment.blogid }, function(err, blogentry) {
+        if (err) {
+            console.log(err);
+            res.json(500, {error: 'No blog entry found with id' + comment.blogid });
+       } else {
+            if (blogentry) {
+                var comments = [];
+                comments = blogentry.comments;
+                blogentry.comments.push({
+                    body: comment.body,
+                    userid: comment.userid,
+                    username: comment.username,
+                    usertype: 'facebook',
+                    userpic: comment.userpic,
+                    date: new Date()
+                });
+                console.log("getting ready to save blog entry");
+                console.log(blogentry);
+                blogentry.save(function(err, newEntry) {
+                    if (err) throw err;
+                    console.log("Updated the blog entry with added comment ID: " + newEntry.comments[newEntry.comments.length-1]._id);
+                    res.json({success:true, commentid: newEntry.comments[newEntry.comments.length-1]._id});
+                });
+
+            } else {
+                res.json(500, {error : 'Blog Entry Not Found'});
+            }
+       }
+    });   
+}
+
+exports.deleteComment = function(req, res) {
+    var commentProps = JSON.parse(req.body.properties);
+    // comment has properties: blogid, commentid
+    console.log(commentProps);
+    //res.json({success:true});
+    
+    BlogEntry.findOne({ _id : commentProps.blogid }, function(err, blogentry) {
+        if (err) {
+            console.log(err);
+            res.json(500, {error: 'No blog entry found with id' + commentProps.blogid });
+       } else {
+            if (blogentry) {
+                var comment = blogentry.comments.id(commentProps.commentid).remove();
+                console.log(blogentry);
+                blogentry.save(function(err) {
+                    if (err) throw err;
+                    res.json({success:true});
+                });
+
+            } else {
+                res.json(500, {error : 'Blog Entry Not Found'});
+            }
+       }
+    });   
+}
 
 /* ----------------- admin methods -------------------------- */
 
