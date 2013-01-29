@@ -30,11 +30,67 @@ $(document).ready(function() {
 		        </div>
 	        </li>
 <%	for (var j=0; j<blogentry.comments.length; j++) { %>
+<%
+    var now = new Date().getTime();
+    var then = blogentry.comments[j].date;
+    var diff = now - then;
+    diff = diff / 1000;  // get to seconds
+    var timeago = "";
+    if (diff / 60 < 1) {
+        timeago = "A few seconds ago";
+    } else {
+        // more than a minute
+        var minutes = Math.floor(diff / 60);
+        if (minutes < 60) {
+        	if (minutes == 1) {
+            	timeago = minutes + " minute ago";
+            } else {
+            	timeago = minutes + " minutes ago";
+            }
+        } else {
+            var hours = Math.floor(minutes / 60);
+            if (hours < 24) {
+            	if (hours == 1) {
+                	timeago = hours + " hour ago";
+                } else {
+                	timeago = hours + " hours ago";
+                }
+            } else {
+                var days = Math.floor(hours / 24);
+                if (days < 7) {
+                	if (days == 1) {
+	                    timeago = days + " day ago";
+	                } else {
+	                    timeago = days + " days ago";
+	                }
+                } else if (days < 30) {
+                    var weeks = Math.floor(days / 7);
+                    if (weeks == 1) {
+	                    timeago = weeks + " week ago";
+	                } else {
+	                    timeago = weeks + " weeks ago";
+	                }
+                } else if (days < 365) {
+                    var months = Math.floor(weeks / 4);
+                    if (months == 1) {
+	                    timeago = months + " month ago";
+	                } else {
+	                    timeago = months + " months ago";
+	                }
+                } else {
+                    timeago = "Over a year ago";
+                } 
+            }
+        }
+    }
+%>
+
 	        <li class="user-comment" data-commentid="<%= blogentry.comments[j].id %>" data-commentuserid="<%= blogentry.comments[j].userid %>">
 				<a href="#"><div class="delete-x hidden">x</div></a>
 		        <div class="comment">
 		        	<img height="20" src="<%= blogentry.comments[j].userpic %>" /> <span class="hlight"><%= blogentry.comments[j].username %></span><br/>
-		        	<%= blogentry.comments[j].body %>
+		        	<%= blogentry.comments[j].body %><br/>
+		        	<span class="time-ago"><%= timeago %></span>
 		        </div>
 	        </li>
 <% } %>

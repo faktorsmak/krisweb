@@ -5,7 +5,8 @@ var mongoose = require('mongoose'),
 		hash = require('../pass').hash,
 		url = require('url'),
 		fs = require('fs'),
- 		truncate = require('./utils.js').truncate;
+ 		truncate = require('./utils.js').truncate,
+        email   = require("emailjs");
 
 var blogEntrySchema = new mongoose.Schema({
 		title:String,
@@ -103,11 +104,29 @@ exports.addComment = function(req, res) {
                     userpic: comment.userpic,
                     date: new Date()
                 });
-                console.log("getting ready to save blog entry");
-                console.log(blogentry);
                 blogentry.save(function(err, newEntry) {
                     if (err) throw err;
-                    console.log("Updated the blog entry with added comment ID: " + newEntry.comments[newEntry.comments.length-1]._id);
+                    
+                    /*
+                    // send an email to notify us
+                    var server  = email.server.connect({
+                       user:    "xxxx", 
+                       password:"xxxx", 
+                       host:    "smtp.gmail.com", 
+                       ssl:     true
+                    
+                    });
+                    
+                    // send the message and get a callback with an error or details of the message that was sent
+                    server.send({
+                       text:    "You got a new comment on kristinazakrzewski.com - http://www.kristinazakrzewski.com/blog/" + newEntry._id, 
+                       from:    "Rob <rob.zakrzewski@gmail.com>", 
+                       to:      "Kris <kzakrzewski@gmail.com>",
+                       cc:      "Rob <rob.zakrzewski@gmail.com>",
+                       subject: "Somebody commented on a blog entry on kristinazakrzewski.com"
+                    }, function(err, message) { console.log(err || message); });
+                    */
+
                     res.json({success:true, commentid: newEntry.comments[newEntry.comments.length-1]._id});
                 });
 
