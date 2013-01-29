@@ -142,7 +142,8 @@ BlogCommentHandler.prototype.addEvents = function() {
                         $(that).parents('.comments-list').children('.comments-footer').slideDown(function() {
                             $(that).parents('.comments-list').children('.comments-footer').before('<li class="user-comment" data-commentid="' 
                             + response.commentid + '" data-commentuserid="' + comment.userid + '"><a href="#"><div class="delete-x hidden">x</div></a><div class="comment"><img height="20" src="' 
-                            + comment.userpic + '" /> ' + '<span class="hlight">' + comment.username + '</span><br/>' + comment.body + '</div></li>');
+                            + comment.userpic + '" /> ' + '<span class="hlight">' + comment.username + '</span><br/>' + comment.body 
+                            + '<br/><span class="time-ago">Just now</span></div></li>');
                         });
                     });
                 }
