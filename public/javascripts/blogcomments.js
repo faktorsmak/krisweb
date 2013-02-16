@@ -188,5 +188,71 @@ BlogCommentHandler.prototype.addEvents = function() {
     
     });
     
+    /**
+     * format the timestamp for each comment into a string saying how long ago it was posted
+     */
+    $('span.time-ago').each( function(index, element) {
+        $(element).html(me.getCommentTime($(element).attr('data-timestamp')));
+    });
 };
 
+
+/**
+ * Formats a date into a string that describes how long ago it was
+ * @param {Object} time
+ */
+BlogCommentHandler.prototype.getCommentTime = function(time) {
+    var now = new Date().getTime();
+    var then = new Date(time).getTime();
+    var diff = now - then;
+    diff = diff / 1000;  // get to seconds
+    var timeago = "";
+    if (diff / 60 < 1) {
+        timeago = "A few seconds ago";
+    } else {
+        // more than a minute
+        var minutes = Math.floor(diff / 60);
+        if (minutes < 60) {
+            if (minutes == 1) {
+                timeago = minutes + " minute ago";
+            } else {
+                timeago = minutes + " minutes ago";
+            }
+        } else {
+            var hours = Math.floor(minutes / 60);
+            if (hours < 24) {
+                if (hours == 1) {
+                    timeago = hours + " hour ago";
+                } else {
+                    timeago = hours + " hours ago";
+                }
+            } else {
+                var days = Math.floor(hours / 24);
+                if (days < 7) {
+                    if (days == 1) {
+                        timeago = days + " day ago";
+                    } else {
+                        timeago = days + " days ago";
+                    }
+                } else if (days < 30) {
+                    var weeks = Math.floor(days / 7);
+                    if (weeks == 1) {
+                        timeago = weeks + " week ago";
+                    } else {
+                        timeago = weeks + " weeks ago";
+                    }
+                } else if (days < 365) {
+                    var months = Math.floor(weeks / 4);
+                    if (months == 1) {
+                        timeago = months + " month ago";
+                    } else {
+                        timeago = months + " months ago";
+                    }
+                } else {
+                    timeago = "Over a year ago";
+                } 
+            }
+        }
+    }
+    return timeago;
+};
