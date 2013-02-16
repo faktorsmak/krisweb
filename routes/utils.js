@@ -1,3 +1,6 @@
+var gm = require("gm");
+
+
 /**
  * Truncate a string to the given length, breaking at word boundaries and adding an elipsis
  * @param string str String to be truncated
@@ -19,4 +22,21 @@ exports.truncate = function (str, limit) {
 		}
 	}
 	return bits.join('');
+}
+
+/**
+ * resize an image
+ * @param string inputPath - path to the image file to resize
+ * @param string outputPath - path to where the resized image should be written
+ * @param number width - max width
+ * @param number height - max height
+ * @param function callback
+ */
+exports.resizeImage = function(inputPath, outputPath, width, height, callback) {
+    var mygm = gm(inputPath);
+    mygm = mygm.resize(width, height);
+    mygm.write(outputPath, function (err) {
+        // err is null if there is no error
+        callback(err);
+    });
 }

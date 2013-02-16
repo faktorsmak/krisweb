@@ -5,7 +5,8 @@ var mongoose = require('mongoose'),
 		hash = require('../pass').hash,
 		url = require('url'),
 		fs = require('fs'),
- 		truncate = require('./utils.js').truncate;
+ 		truncate = require('./utils.js').truncate,
+ 		resizeImage = require('./utils.js').resizeImage;
 
 
 var bookSchema = new mongoose.Schema({ 
@@ -204,9 +205,8 @@ exports.adminStoriesNewPost = function(req,res) {
 		    var tmp_path = req.files.image.path;
 		    // set where the file should actually exists - in this case it is in the "images" directory
 		    var target_path = './krisweb/public/images/stories/' + newStory._id;
-		    // move the file from the temporary location to the intended location
-		    fs.rename(tmp_path, target_path, function(err) {
-		        if (err) throw err;
+            resizeImage(tmp_path, target_path, 290, 290, function(err) {
+                if (err) return res.send({error: true, errMsg: err});
 		        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
 		        fs.unlink(tmp_path, function() {
 		            if (err) throw err;
@@ -259,9 +259,8 @@ exports.adminStoriesEditPost = function(req,res) {
 					    var tmp_path = req.files.image.path;
 					    // set where the file should actually exists - in this case it is in the "images" directory
 					    var target_path = './krisweb/public/images/stories/' + story._id;
-					    // move the file from the temporary location to the intended location
-					    fs.rename(tmp_path, target_path, function(err) {
-					        if (err) throw err;
+                        resizeImage(tmp_path, target_path, 290, 290, function(err) {
+                            if (err) return res.send({error: true, errMsg: err});
 					        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
 					        fs.unlink(tmp_path, function() {
 					            if (err) throw err;

@@ -6,8 +6,8 @@ var mongoose = require('mongoose'),
 		url = require('url'),
 		fs = require('fs'),
  		truncate = require('./utils.js').truncate,
-        email   = require("emailjs"),
-        gm = require("gm");
+ 		resizeImage = require('./utils.js').resizeImage,
+        email   = require("emailjs");
 
 var blogEntrySchema = new mongoose.Schema({
 		title:String,
@@ -195,9 +195,7 @@ exports.adminBlogEntriesNewPost = function(req,res) {
 		    var tmp_path = req.files.image.path;
             // set where the file should actually exists - in this case it is in the "images/blog" directory
             var target_path = './krisweb/public/images/blog/' + newEntry._id;
-		    var mygm = gm(tmp_path);
-            mygm = mygm.resize(290, 290);
-            mygm.write(target_path, function (err) {
+            resizeImage(tmp_path, target_path, 290, 290, function(err) {
                 if (err) return res.send({error: true, errMsg: err});
                 // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
                 fs.unlink(tmp_path, function() {
@@ -260,9 +258,7 @@ exports.adminBlogEntriesEditPost = function(req,res) {
 					    var tmp_path = req.files.image.path;
 					    // set where the file should actually exists - in this case it is in the "images" directory
 					    var target_path = './krisweb/public/images/blog/' + blogentry._id;
-                        var mygm = gm(tmp_path);
-                        mygm = mygm.resize(290, 290);
-                        mygm.write(target_path, function (err) {
+					    resizeImage(tmp_path, target_path, 290, 290, function(err) {
                             if (err) return res.send({error: true, errMsg: err});
                             // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
                             fs.unlink(tmp_path, function() {
