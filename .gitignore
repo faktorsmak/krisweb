@@ -1,5 +1,4 @@
 node_modules/**/*
-
-uploads/images/**/*
+uploads/images/*
 public/images/blog/**/*
 dbpopulate.js
