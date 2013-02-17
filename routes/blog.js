@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
 		fs = require('fs'),
  		truncate = require('./utils.js').truncate,
  		resizeImage = require('./utils.js').resizeImage,
+        nconf = require('nconf'),
         email   = require("emailjs");
 
 var blogEntrySchema = new mongoose.Schema({
@@ -83,11 +84,8 @@ exports.blogEntry = function(req, res) {
 }
 
 exports.addComment = function(req, res) {
-//    console.log("in addComment", req);
+    // console.log("in addComment", req);
     var comment = JSON.parse(req.body.properties);
-    // comment has properties: blogid, userid, username, body
-    console.log(comment);
-    //res.json({success:true});
     
     BlogEntry.findOne({ _id : comment.blogid }, function(err, blogentry) {
         if (err) {
@@ -108,26 +106,25 @@ exports.addComment = function(req, res) {
                 blogentry.save(function(err, newEntry) {
                     if (err) throw err;
                     
-                    /*
-                    // send an email to notify us
-                    var server  = email.server.connect({
-                       user:    "xxxx", 
-                       password:"xxxx", 
-                       host:    "smtp.gmail.com", 
-                       ssl:     true
-                    
-                    });
-                    
-                    // send the message and get a callback with an error or details of the message that was sent
-                    server.send({
-                       text:    "You got a new comment on kristinazakrzewski.com - http://www.kristinazakrzewski.com/blog/" + newEntry._id, 
-                       from:    "Rob <rob.zakrzewski@gmail.com>", 
-                       to:      "Kris <kzakrzewski@gmail.com>",
-                       cc:      "Rob <rob.zakrzewski@gmail.com>",
-                       subject: "Somebody commented on a blog entry on kristinazakrzewski.com"
-                    }, function(err, message) { console.log(err || message); });
-                    */
-
+                    if (nconf.get("emailNotifications")) {
+                        // send an email to notify us
+                        var server  = email.server.connect({
+                           user:    nconf.get("emailUser"), 
+                           password: nconf.get("emailPass"), 
+                           host:    "smtp.gmail.com", 
+                           ssl:     true
+                        
+                        });
+                        
+                        // send the message and get a callback with an error or details of the message that was sent
+                        server.send({
+                           text:    "You got a new comment on kristinazakrzewski.com - http://www.kristinazakrzewski.com/blog/" + newEntry._id, 
+                           from:    "Rob <rob.zakrzewski@gmail.com>", 
+                           to:      "Kris <kzakrzewski@gmail.com>",
+                           cc:      "Rob <rob.zakrzewski@gmail.com>",
+                           subject: "Somebody commented on a blog entry on kristinazakrzewski.com"
+                        }, function(err, message) { console.log(err || message); });
+                    }
                     res.json({success:true, commentid: newEntry.comments[newEntry.comments.length-1]._id});
                 });
 

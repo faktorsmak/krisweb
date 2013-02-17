@@ -9,12 +9,19 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , expressLayouts = require('express-ejs-layouts')
+  , nconf = require('nconf')
   , restrict = require('./routes/index.js').restrict;
 
 var app = express();
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 8080);
+  // load config filej
+  nconf.argv()
+       .env()
+       .file({ file: __dirname + '/krisweb.' + nconf.get('NODE_ENV') + '.conf' });
+  console.log("using config: " + nconf.get('NODE_ENV'));
+
+  app.set('port', nconf.get('PORT') || 8080);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.use(express.favicon());
