@@ -29,7 +29,7 @@ a:hover {
 #main {
 	background-color:#ffffff;
 	padding: 15px;
-	width: 1000px;
+	/*width: 1000px;*/
 	box-shadow: 2px 2px 5px #5e5e5e;
 	margin-left: auto ;
   	margin-right: auto ;
@@ -41,30 +41,30 @@ a:hover {
 }
 
 #kz {
-	margin-left:20px;
+	/*margin-left:20px;*/
 	margin-top:0px;
 	margin-bottom:0px;
 	padding-left:5px;
 	padding-right:5px;
-	float:left;
+	/*float:left;*/
 }
 
 #kz h2 {
 	margin: 8px 0px 0px 0px;
 	padding: 0;
 	font-size:36px;
-	height: 40px;
+	/*height: 40px;*/
 	/*text-shadow: #dda859 1px 1px 2px*/
 }
 #kz h5 {
 	margin:0;
-	float:right;
+	/*float:right;*/
 }
 
 #tophalf {
-	height:90px;
-	border-bottom: 3px solid #333333;
-	vertical-align: bottom;
+	/*height:90px;*/
+	/*border-bottom: 3px solid #333333;*/
+	/*vertical-align: bottom;*/
 }
 
 #bottomhalf {
@@ -76,7 +76,7 @@ a:hover {
 
 #title {
 	padding: 0px 0px 0px 15px;
-	width: 1000px;
+	/*width: 1000px;*/
 	overflow: hidden;
 	display: table-cell;
 	vertical-align: middle;
@@ -98,7 +98,7 @@ a:hover {
 	position:relative;
 	margin-left:2px;
 	margin-top: 15px;
-	width:650px;
+	/*width:650px;*/
 	padding:5px 20px 10px 10px;
 	float:left;
 	text-align:justify;
@@ -127,11 +127,11 @@ a:hover {
 }
 .contentLeftColumn1 {
 	float:left;
-	width: 240px;
+	/*width: 240px;*/
 }
 .contentLeftColumn2 {
 	float:left;
-	width: 400px;
+	/*width: 400px;*/
 	padding-right: 10px;
 }
 
@@ -177,7 +177,7 @@ a:hover {
 }
 
 #contentright {
-	width:338;
+	/*width:338;*/
 	margin-top: 15px;
 	float:left;
 	text-align:center;
@@ -194,7 +194,7 @@ a:hover {
 
 #wrapper {
 	position:relative;
-	width:400px;
+	/*width:400px;*/
 	overflow:hidden;
 	float:right;
 }
@@ -223,7 +223,6 @@ a:hover {
 	background-color:#f8e4c1;
 }
 
-
 li.formlist {	
 	list-style:none; 
 }
@@ -237,7 +236,7 @@ ul.linklist {
 {
 	padding:10px;
 	margin: 0px;
-	width: 1000px;
+	/*width: 1000px;*/
 	border:1px solid #494e52;
 }
 
@@ -255,22 +254,25 @@ div .bookdescription {
 	padding:0px 10px 10px;
 	display:none;
 	background-color: #ffebb5;
-	width: 300px;
+	/*width: 300px;*/
 	height: 250px;
 	box-shadow: 10px 10px 5px #888888;
 }
 
 .bookicon {
-	margin: 8px 25px 5px 10px;
+	margin: 8px 25px 5px 0px;
 	padding: -1px;
 	box-shadow: 2px 2px 4px #b3b3b3;
+	width: 40%;
+	max-width: 200px;
 }
+/*
 .bookicon:hover {
 	margin: 7px 26px 6px 9px;
 	padding: -1px;
 	box-shadow: 4px 4px 6px #b3b3b3;
 }
-
+*/
 .reviews {
 	width:auto;
 }
@@ -285,15 +287,9 @@ div .bookdescription {
 	border: 1px solid gray;
 	border-radius: 3px;
 	padding: 10px;
-	/* background-color:#f7f6f1; */
 	background-color:#f8e4c1;
 	box-shadow: 1px 1px 2px #5e5e5e;
 }
-/*
-.highlightBox:hover {
-	background-color:#f8e4c1;
-}
-*/
 .highlightBox a:link {
 	color:#d28327;
 	text-decoration:none;
@@ -311,12 +307,16 @@ div .bookdescription {
 	border-radius: 5px 5px 0px 0px;
 	border: 1px solid gray;
 	box-shadow: 1px 1px 2px #5e5e5e;
-	width: 300px;
+	/*width: 300px;*/
 }
 .sideBoxTitle {
+	padding-left: 5px;
 	border-radius: 5px 5px 0px 0px;
-	border-bottom: 1px solid gray;
+	border: 1px solid gray;
 	background-color:#f8e4c1;
+}
+.sideBoxContent {
+	border: 1px solid gray;
 }
 .sideBoxContent table {
 	text-align:left;
