@@ -14,13 +14,15 @@
 
 <%- contentFor('contenttitle') %>
 <%= story.title %>
+<%- contentFor('og_title') %>
+Kristina Zakrzewski
+<%- contentFor('og_description') %>
+Author | Teachor | Mother | Wife
+<%- contentFor('og_image') %>
+/images/kris2.png
 <%- contentFor('contentright') %>
 <div class="hidden-phone">
 	<img id='storyimage' align='center' width="290" src='/images/stories/<%= story._id %>' />
 </div>
 <br/><br/>
 <a href="/books/Cold_Coffee"><img src="/images/coldcoffee_ad3.png" width="300" /></a>
-<%- contentFor('opengraph') %>
-<meta property="og:title" content="Kristina Zakrzewski: <%= story.title %>" />
-<meta property="og:description" content="<%- story.content %>" />
-<meta property="og:image" content="/images/stories/<%= story._id %>" />

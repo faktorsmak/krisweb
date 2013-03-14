@@ -60,6 +60,12 @@ $(document).ready(function() {
 <p><a href="/blog">&lt;&lt; Return to blog</a></p>
 <%- contentFor('contenttitle') %>
 <%= blogentry.title %>
+<%- contentFor('og_title') %>
+Kristina Zakrzewski: <%= blogentry.title %>
+<%- contentFor('og_description') %>
+<%-blogentry.content %>
+<%- contentFor('og_image') %>
+/images/blog/<%= blogentry._id %>
 <%- contentFor('contentright') %>
 <% if (blogentry.image > 0) { %>
 <div>
@@ -68,7 +74,3 @@ $(document).ready(function() {
 <br/><br/>
 <% } %>
 <a href="/books/Cold_Coffee"><img src="/images/coldcoffee_ad3.png" width="300" /></a>
-<%- contentFor('opengraph') %>
-<meta property="og:title" content="Kristina Zakrzewski: <%= blogentry.title %>" />
-<meta property="og:description" content="<%- blogentry.content %>" />
-<meta property="og:image" content="/images/blog/<%= blogentry._id %>" />
