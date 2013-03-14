@@ -68,3 +68,7 @@ $(document).ready(function() {
 <br/><br/>
 <% } %>
 <a href="/books/Cold_Coffee"><img src="/images/coldcoffee_ad3.png" width="300" /></a>
+<%- contentFor('opengraph') %>
+<meta property="og:title" content="Kristina Zakrzewski: <%= blogentry.title %>" />
+<meta property="og:description" content="<%- blogentry.content %>" />
+<meta property="og:image" content="/images/blog/<%= blogentry._id %>" />
