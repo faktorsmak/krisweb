@@ -63,13 +63,13 @@ $(document).ready(function() {
 <%- contentFor('og_title') %>
 Kristina Zakrzewski: <%= blogentry.title %>
 <%- contentFor('og_description') %>
-Author | Teachor | Mother | Wife
+<%= blogentry.contentPreview %>
 <%- contentFor('og_image') %>
 /images/blog/<%= blogentry._id %>
 <%- contentFor('contentright') %>
 <% if (blogentry.image > 0) { %>
 <div>
-	<img align='center' width="240" src='/images/blog/<%= blogentry._id %>' />
+	<img align='center' width="300" src='/images/blog/<%= blogentry._id %>' />
 </div>
 <br/><br/>
 <% } %>

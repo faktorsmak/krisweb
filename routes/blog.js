@@ -73,6 +73,7 @@ exports.blogEntry = function(req, res) {
        } else {
        		if (blogentry) {
 	       		//console.log('found blog with id=' + blogentry._id);
+	       		blogentry.contentPreview = blogentry.content.substring(0,250) + "...";
 	       		blogentry.content = blogentry.content.replace(/\n/g, '<br />');
 	       		//console.log("image is: ", blogentry.image);
 	       		res.render('blogentry', { title : blogentry.title, blogentry : blogentry, user : req.session.user });
