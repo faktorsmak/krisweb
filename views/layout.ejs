@@ -14,47 +14,60 @@
         <link href="/bootstrap2/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="/bootstrap2/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
 
-		<link type="text/css" href="/jquery-ui/css/ui-lightness/jquery-ui-1.8.24.custom.css" rel="Stylesheet" />
+  		  <link type="text/css" href="/jquery-ui/css/ui-lightness/jquery-ui-1.8.24.custom.css" rel="Stylesheet" />
 
         <LINK href="/stylesheets/application.css" rel="stylesheet" type="text/css">
 
-	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-		<script type="text/javascript" src="/jquery-ui/js/jquery-1.8.2.min.js"></script>
-		<script type="text/javascript" src="/jquery-ui/js/jquery-ui-1.8.24.custom.min.js"></script>
+  	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  		  <script type="text/javascript" src="/jquery-ui/js/jquery-1.8.2.min.js"></script>
+  		  <script type="text/javascript" src="/jquery-ui/js/jquery-ui-1.8.24.custom.min.js"></script>
 
-	    <script src="/javascripts/jquery.hoverIntent.js"></script>
-	    <script src="/bootstrap2/js/bootstrap.min.js"></script>
-	    
-    	<script>
-			// When the document loads do everything inside here ...
-			$(document).ready(function() {
+  	    <script src="/javascripts/jquery.hoverIntent.js"></script>
+  	    <script src="/bootstrap2/js/bootstrap.min.js"></script>
+  	    
+        <!-- google analytics -->
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-43427429-1']);
+          _gaq.push(['_trackPageview']);
 
-				$("a.tab").hoverIntent(function() {
-					$("div.menu_content").fadeOut();
-					var content_show = $(this).attr("title");
-					$("#" + content_show).slideDown();
-				}, function() {
-				});
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
 
-				
-				// select the tab based on the URL
-				var path = window.location.pathname;
-				if (path == '/') {
-					$('#home').addClass('menuitem_selected');
-				} else if (path.substring(0, 6) === '/books') {
-					$('#novels').addClass('menuitem_selected');
-				} else if (path.substring(0, 8) === '/stories') {
-					$('#stories').addClass('menuitem_selected');
-				} else if (path.substring(0, 5) === '/blog') {
-					$('#blog').addClass('menuitem_selected');
-				} else if (path.substring(0, 5) === '/bio') {
-					$('#bio').addClass('menuitem_selected');
-				}
+      	<script>
+  			// When the document loads do everything inside here ...
+  			$(document).ready(function() {
 
-			});
-		</script>
+  				$("a.tab").hoverIntent(function() {
+  					$("div.menu_content").fadeOut();
+  					var content_show = $(this).attr("title");
+  					$("#" + content_show).slideDown();
+  				}, function() {
+  				});
 
+  				
+  				// select the tab based on the URL
+  				var path = window.location.pathname;
+  				if (path == '/') {
+  					$('#home').addClass('menuitem_selected');
+  				} else if (path.substring(0, 6) === '/books') {
+  					$('#novels').addClass('menuitem_selected');
+  				} else if (path.substring(0, 8) === '/stories') {
+  					$('#stories').addClass('menuitem_selected');
+  				} else if (path.substring(0, 5) === '/blog') {
+  					$('#blog').addClass('menuitem_selected');
+  				} else if (path.substring(0, 5) === '/bio') {
+  					$('#bio').addClass('menuitem_selected');
+  				}
+
+  			});
+  		</script>
 	</head>
+
 	<body>
 		<div id="fb-details" style="display:none;" data-userid="" data-username="" data-loggedin="0"></div>
 		<div id="fb-root"></div>

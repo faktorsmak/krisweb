@@ -1,13 +1,31 @@
 {
-  "name": "application-name",
-  "version": "0.0.1",
+  "name": "krisweb",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "node app"
   },
   "dependencies": {
     "express": "3.0.0rc2",
-    "ejs": "*",
-    "stylus": "*"
+    "crypto": "0.0.3",
+    "ejs": "0.8.1",
+    "emailjs": "0.3.4",
+    "express-ejs-layouts": "0.1.0",
+    "gm": "1.8.1",
+    "jsdom": "0.2.15",
+    "mongodb": "1.1.4",
+    "mongoose": "3.0.2",
+    "mongoskin": "0.4.1",
+    "monitor": "0.4.5",
+    "nconf": "0.6.7",
+    "nodemon": "0.6.23",
+    "request": "2.11.0",
+    "scraper": "0.0.9",
+    "stylus": "0.28.2",
+    "jasmine-node": "1.8.1"
+  },
+  "devDependencies": {
+    "cucumber": "latest",
+    "zombie": "~2.0.0-alpha20"
   }
 }
