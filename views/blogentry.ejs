@@ -4,6 +4,13 @@
 <script language="javascript">
 $(document).ready(function() {
  	var blogCommentWidget = new BlogCommentHandler({});
+
+    $('.add-a-comment').bind('click', function(e) {
+    	e.preventDefault();
+    	console.log("sending an event");
+        // send google analytics event to track the click
+        ga('send', 'event', 'link', 'click', 'add-a-comment');
+	});
 });
 </script>
 

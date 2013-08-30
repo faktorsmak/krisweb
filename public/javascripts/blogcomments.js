@@ -92,7 +92,7 @@ BlogCommentHandler.prototype.addEvents = function() {
         // click on "Add a comment" link
         $('.add-a-comment').bind('click', function(e) {
             e.preventDefault();
-            console.log("got click on add first comment and the blog id is:", $(this).parents('.entry').attr('id'));
+            //console.log("got click on add first comment and the blog id is:", $(this).parents('.entry').attr('id'));
             var loggedin = $('#fb-details').attr('data-loggedin');
             if (loggedin == "0") {
                 me.facebookLogin(function() {
