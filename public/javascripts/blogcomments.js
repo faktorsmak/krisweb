@@ -34,12 +34,12 @@ BlogCommentHandler.prototype.initFacebook = function() {
             // not_authorized
             console.log("not authorized");
             $('#fb-details').attr('data-loggedin', 0);
-            $('.add-a-comment').html('Login using your Facebook account to add a comment');
+            $('.add-a-comment').html('Add a comment');
           } else {
             // not_logged_in
             console.log("not logged in");
             $('#fb-details').attr('data-loggedin', 0);
-            $('.add-a-comment').html('Login using your Facebook account to add a comment');
+            $('.add-a-comment').html('Add a comment');
           }
         });
       };
