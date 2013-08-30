@@ -4,13 +4,6 @@
 <script language="javascript">
 $(document).ready(function() {
  	var blogCommentWidget = new BlogCommentHandler({});
-
-    $('.add-a-comment').bind('click', function(e) {
-    	e.preventDefault();
-    	console.log("sending an event");
-        // send google analytics event to track the click
-        ga('send', 'event', 'link', 'click', 'add-a-comment');
-	});
 });
 </script>
 
@@ -57,7 +50,7 @@ $(document).ready(function() {
 <% } %>
 	        <li class="comments-footer">
 		        <div>
-		        	<a href="#" class="add-a-comment">Add a comment</a>
+		        	<a href="#" class="add-a-comment" onclick="_gaq.push(['_trackEvent', 'add-a-comment', 'clicked'])")>Add a comment</a>
 		        </div>
 	        </li>
 	        <li class="add-comment" style="display:none;">
