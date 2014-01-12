@@ -5,11 +5,11 @@
         <link rel="icon" type="image/ico" href="/images/k-icon.png">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
         <meta property="og:title" content="<%-og_title%>" />
-        <meta property="og:description" content="<%-og_description %>" />
-        <meta property="og:image" content="<%-og_image%>" />
-                
+        <meta property="og:description" content="<%= og_description %>" />
+        <meta property="og:image" content="http://www.kristinazakrzewski.com<%-og_image%>" />
+
         <!-- Bootstrap -->
         <link href="/bootstrap2/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="/bootstrap2/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -24,7 +24,7 @@
 
   	    <script src="/javascripts/jquery.hoverIntent.js"></script>
   	    <script src="/bootstrap2/js/bootstrap.min.js"></script>
-  	    
+
         <!-- google analytics -->
         <script type="text/javascript">
           var _gaq = _gaq || [];
@@ -50,7 +50,7 @@
   				}, function() {
   				});
 
-  				
+
   				// select the tab based on the URL
   				var path = window.location.pathname;
   				if (path == '/') {
@@ -72,7 +72,7 @@
 	<body>
 		<div id="fb-details" style="display:none;" data-userid="" data-username="" data-loggedin="0"></div>
 		<div id="fb-root"></div>
-	
+
             <div class="navbar navbar-inverse navbar-fixed-top hidden-desktop hidden-tablet">
                   <div class="navbar-inner">
                     <div class="container">
@@ -141,8 +141,8 @@
     			     </div>
 			     </div>
 			 </div>
-						
-			
+
+
             <div class="row-fluid">
                 <div class="span12 hidden-phone"></div>
                 <div class="row-fluid">

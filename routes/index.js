@@ -1,6 +1,6 @@
-var mongoose = require('mongoose'), 
+var mongoose = require('mongoose'),
         db = mongoose.createConnection('localhost', 'test'),
-		jsdom = require('jsdom'), 
+		jsdom = require('jsdom'),
 		request = require('request'),
 		hash = require('../pass').hash,
 		url = require('url'),
@@ -9,12 +9,12 @@ var mongoose = require('mongoose'),
  		resizeImage = require('./utils.js').resizeImage;
 
 
-var bookSchema = new mongoose.Schema({ 
+var bookSchema = new mongoose.Schema({
         title:String,
         description:String,
-        publishdate:Date 
-}); 
-var Book = db.model('Book', bookSchema); 
+        publishdate:Date
+});
+var Book = db.model('Book', bookSchema);
 
 
 var storySchema = new mongoose.Schema({
@@ -36,7 +36,6 @@ var users = {
 hash('alex21', function(err, salt, hash){
   if (err) throw err;
   // store the salt & hash in the "db"
-  //console.log("getting ready to store salt and hash in db");
   users.kris.salt = salt;
   users.kris.hash = hash;
 });
@@ -51,10 +50,10 @@ exports.index = function(req, res) {
 }
 
 exports.books = function(req, res) {
-  
+
     //console.log("books got called with ID of: " + req.params.id);
-  	Book.find(function(err, books) { 
-    	if (err) { 
+  	Book.find(function(err, books) {
+    	if (err) {
             console.log(err);
        } else {
        		// for each book, truncate the description and put ...read more
@@ -63,13 +62,13 @@ exports.books = function(req, res) {
        		}
        		res.render('books', { title : 'Novels', books : books });
        }
-  	}); 
+  	});
 }
 
 exports.book = function(req, res) {
 	//console.log("get book with id of " + req.params.id);
-  	Book.findOne({ _id : req.params.id }, function(err, book) { 
-    	if (err) { 
+  	Book.findOne({ _id : req.params.id }, function(err, book) {
+    	if (err) {
             console.log(err);
        } else {
        		if (book) {
@@ -79,7 +78,7 @@ exports.book = function(req, res) {
        			res.render('notfound', {title : 'Page Not Found'});
        		}
        }
-  	}); 	
+  	});
 }
 
 exports.bookColdCoffee = function(req, res) {
@@ -95,8 +94,8 @@ exports.bookCatchingArtemis = function(req, res) {
 }
 
 exports.stories = function(req, res) {
-  	Story.find({}).sort('-submitdate').exec(function(err, stories) { 
-    	if (err) { 
+  	Story.find({}).sort('-submitdate').exec(function(err, stories) {
+    	if (err) {
             console.log(err);
        } else {
        		// for each book, truncate the description and put ...read more
@@ -105,13 +104,13 @@ exports.stories = function(req, res) {
        		}
        		res.render('stories', { title : 'stories', stories : stories, user : req.session.user });
        }
-  	}); 
+  	});
 }
 
 exports.story = function(req, res) {
 	//console.log("get story with id of " + req.params.id);
-  	Story.findOne({ _id : req.params.id }, function(err, story) { 
-    	if (err) { 
+  	Story.findOne({ _id : req.params.id }, function(err, story) {
+    	if (err) {
             console.log(err);
        } else {
        		if (story) {
@@ -122,7 +121,7 @@ exports.story = function(req, res) {
        			res.render('notfound', {title : 'Page Not Found'});
        		}
        }
-  	}); 	
+  	});
 }
 
 exports.bio = function(req, res) {
@@ -159,7 +158,7 @@ exports.adminLoginGet = function(req, res){
 		message = req.session.error;
 	}
 
-	res.render('login', {title : 'Login', message:message, redirectTo: req.query.redirectURL}); 
+	res.render('login', {title : 'Login', message:message, redirectTo: req.query.redirectURL});
 }
 
 
@@ -221,8 +220,8 @@ exports.adminStoriesNewPost = function(req,res) {
 
 exports.adminStoriesEdit = function(req,res) {
 	//console.log("get story with id of " + req.params.id);
-  	Story.findOne({ _id : req.params.id }, function(err, story) { 
-    	if (err) { 
+  	Story.findOne({ _id : req.params.id }, function(err, story) {
+    	if (err) {
             console.log(err);
        		res.render('notfound', {title : 'Page Not Found'});
        } else {
@@ -233,13 +232,13 @@ exports.adminStoriesEdit = function(req,res) {
        			res.render('notfound', {title : 'Page Not Found'});
        		}
        }
-  	}); 	
+  	});
 }
 
 exports.adminStoriesEditPost = function(req,res) {
 	//console.log("get story for update with id of " + req.body.id);
-  	Story.findOne({ _id : req.body.id }, function(err, story) { 
-    	if (err) { 
+  	Story.findOne({ _id : req.body.id }, function(err, story) {
+    	if (err) {
             console.log(err);
        		res.render('notfound', {title : 'Page Not Found'});
        } else {
@@ -250,7 +249,7 @@ exports.adminStoriesEditPost = function(req,res) {
 				//console.log("story content: " + story.content);
 				story.image = req.files.image.name;
 				//console.log("story image: " + story.image);
-				
+
 				story.save(function(err) {
 					if (err) throw err;
 			  		console.log("Updated the story with ID: " + story.id);
@@ -276,7 +275,7 @@ exports.adminStoriesEditPost = function(req,res) {
        			res.render('notfound', {title : 'Page Not Found'});
        		}
        }
-  	}); 	
+  	});
 }
 
 
@@ -285,7 +284,7 @@ exports.urlscrape = function(req, res) {
     request({uri: 'http://youtube.com'}, function(err, response, body){
                 var self = this;
       self.items = new Array();//I feel like I want to save my results in an array
-       
+
       //Just a basic error check
                 if(err && response.statusCode !== 200){console.log('Request error.');}
                 //Send the body param as the HTML code we will parse in jsdom
@@ -296,11 +295,11 @@ exports.urlscrape = function(req, res) {
                 }, function(err, window){
          //Use jQuery just as in a regular HTML page
                         var $ = window.jQuery;
-                         
+
                         console.log($('title').text());
                         res.end($('title').text());
                 });
-        });        
+        });
 }
 
 // Authenticate using our plain-object database of doom!
@@ -317,8 +316,11 @@ function authenticate(name, pass, fn) {
   //console.log("getting ready to call hash function");
   hash(pass, user.salt, function(err, hash){
     if (err) return fn(err);
-    if (hash == user.hash) return fn(null, user);
-    console.log("invalid password");
-    fn(new Error('invalid password'));
+    if (JSON.stringify(hash) === JSON.stringify(user.hash)) {
+      return fn(null, user);
+    } else {
+      console.log("invalid password");
+      fn(new Error('invalid password'));
+    }
   })
 }
