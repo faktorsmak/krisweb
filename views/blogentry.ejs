@@ -8,7 +8,7 @@ $(document).ready(function() {
 </script>
 
 <div class="entry" id="<%= blogentry.id %>">
-<h2><%= blogentry.title %></h2>
+<h2 style="word-wrap: break-word;"><%= blogentry.title %></h2>
 <h5><%= blogentry.submitdate.toDateString() %></h5>
 <p><%- blogentry.content %></p>
 
