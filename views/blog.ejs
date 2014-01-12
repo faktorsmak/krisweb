@@ -40,7 +40,7 @@ $(document).ready(function() {
 	blogentries[i].content = blogentries[i].content.replace(/\n/g, '<br />');
 %>
 	<div class="entry bloglist" id="<%= blogentries[i]._id %>">
-	  <h2><%= blogentries[i].title %></h2>
+	  <h2 style="word-wrap: break-word;"><%= blogentries[i].title %></h2>
 	  <h5><a href="/blog/<%= blogentries[i].id %>"><%= blogentries[i].submitdate.toDateString() %></a></h5>
 	  <% if (blogentries[i].image > 0) { %>
 		  <img src="/images/blog/<%= blogentries[i].id %>" width="150px" align="right" class="bookicon"/>
